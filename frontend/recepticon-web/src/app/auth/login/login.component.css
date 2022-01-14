@@ -1,0 +1,26 @@
+/* .form-container {
+    min-width: 100px;
+    max-width: 500px;
+    width: 100%;
+
+
+
+
+} */
+
+.full-width {
+    width: 100%;
+}
+
+.form-login {
+
+    border-radius: 10px;
+    border: 2px solid grey;
+    padding: 50px;
+
+
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
