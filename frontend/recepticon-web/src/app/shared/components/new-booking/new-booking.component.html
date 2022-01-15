@@ -1,44 +1,118 @@
-<mat-horizontal-stepper #stepper>
-    <!-- <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required."> -->
-    <mat-step errorMessage="Name is required.">
-        <!-- <form [formGroup]="firstFormGroup"> -->
-      <form>
-        <ng-template matStepLabel>Fill out your name</ng-template>
-        <mat-form-field appearance="fill">
-          <mat-label>Name</mat-label>
-          <!-- <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required> -->
-          <input matInput placeholder="Last name, First name" required>
-        </mat-form-field>
-        <div>
-          <p>Go to a different step to see the error state</p>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <!-- <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required."> -->
-    <mat-step errorMessage="Address is required.">
-        <!-- <form [formGroup]="secondFormGroup"> -->
-      <form>
-        <ng-template matStepLabel>Fill out your address</ng-template>
-        <mat-form-field appearance="fill">
-          <mat-label>Address</mat-label>
-          <!-- <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl" required> -->
-          <input matInput placeholder="Ex. 1 Main St, New York, NY" required>
-        </mat-form-field>
-        <div>
-          <p>Go to a different step to see the error state</p>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
+<mat-horizontal-stepper linear (selectionChange)="selectionChange($event)" #stepper>
+
+  <!-- Guest information -->
+  <mat-step label="guest-form" [stepControl]="newGuestFormGroup" errorMessage="Name is required.">
+
+    <form class="stepper-content" [formGroup]="newGuestFormGroup">
+      <ng-template matStepLabel>Guest</ng-template>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Firstname</mat-label>
+        <input type="text" matInput placeholder="First name" formControlName="firstName" required>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Lastname</mat-label>
+        <input type="text" matInput placeholder="Last name" formControlName="lastName" required>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Phone number</mat-label>
+        <input type="text" matInput placeholder="Phone number" formControlName="phoneNumber" required>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Address</mat-label>
+        <input type="text" matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="address" required>
+      </mat-form-field>
+
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button>Reset</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-raised-button color="primary" [disabled]='!newGuestFormGroup.valid'
+          (click)="buildGuest(newGuestFormGroup.value)" matStepperNext>Next</button>
       </div>
-    </mat-step>
-  </mat-horizontal-stepper>
+    </form>
+
+  </mat-step>
+
+  <!-- Booking information -->
+  <mat-step label="booking-form" (click)="buildGuest(newGuestFormGroup.value)"
+    [stepControl]="bookingInformationFormGroup" errorMessage="Address is required.">
+
+    <form class="stepper-content" [formGroup]="bookingInformationFormGroup">
+      <ng-template matStepLabel>Booking</ng-template>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Room Type</mat-label>
+
+        <mat-select formControlName="roomType">
+          <mat-option value="option">Executive</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Room Number</mat-label>
+        <input type="text" matInput placeholder="Ex. Executive" formControlName="roomNumber" required>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Check In</mat-label>
+        <input type="date" matInput placeholder="Ex. Executive" formControlName="checkInDate" required>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Check Out</mat-label>
+        <input type="date" matInput placeholder="Ex. Executive" formControlName="checkOutDate" required>
+      </mat-form-field>
+
+      <div>
+        <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary" [disabled]='!bookingInformationFormGroup.valid'
+          (click)="buildBooking(bookingInformationFormGroup.value)" matStepperNext>Next</button>
+      </div>
+    </form>
+
+  </mat-step>
+
+  <!-- Confirm booking -->
+  <mat-step label="submit-form">
+
+    <div class="stepper-content">
+
+      <ng-template matStepLabel>Verify</ng-template>
+
+
+      <h2>Guest Details</h2>
+      <mat-list role="list">
+        <mat-list-item role="listitem">Fullname: {{ newGuestFormGroup.controls.lastName.value }} {{
+          newGuestFormGroup.controls.firstName.value }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item role="listitem">Phone number: {{ newGuestFormGroup.controls.phoneNumber.value }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item role="listitem">Address: {{ newGuestFormGroup.controls.address.value }}</mat-list-item>
+      </mat-list>
+
+      <h2>Reservation Details</h2>
+      <mat-list role="list">
+        <mat-list-item role="listitem">Room type: {{ bookingInformationFormGroup.controls.roomType.value }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item role="listitem">Room number: {{ bookingInformationFormGroup.controls.roomNumber.value }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item role="listitem">Checkin: {{ bookingInformationFormGroup.controls.checkInDate.value }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item role="listitem">Checkout: {{ bookingInformationFormGroup.controls.checkOutDate.value }}</mat-list-item>
+      </mat-list>
+
+      <div>
+        <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary"
+          [disabled]='!bookingInformationFormGroup.valid || !newGuestFormGroup.valid' (click)="submitBooking()">
+          Submit
+        </button>
+        <button mat-raised-button color="primary" (click)="stepper.reset()">Reset</button>
+      </div>
+
+    </div>
+
+  </mat-step>
+
+</mat-horizontal-stepper>
