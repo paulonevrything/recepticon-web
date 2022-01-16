@@ -6,14 +6,6 @@
     text-align: center;
 }
 
-.full-width {
-    width: 100%;
-}
-
-td {
-    padding-right: 8px;
-}
-
 .mat-raised-button {
     margin: 10px;
 }

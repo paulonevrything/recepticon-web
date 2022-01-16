@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { PeriodicElement } from 'src/app/shared/components/guest-list/guest-list.component';
+import { AddNewRoomTypeComponent } from '../add-new-room-type/add-new-room-type.component';
+import { AddNewRoomComponent } from '../add-new-room/add-new-room.component';
 
 @Component({
   selector: 'app-room-list',
@@ -9,7 +12,7 @@ import { PeriodicElement } from 'src/app/shared/components/guest-list/guest-list
 })
 export class RoomListComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -20,15 +23,12 @@ export class RoomListComponent implements OnInit {
   @ViewChild(MatTable)
   table!: MatTable<PeriodicElement>;
 
-  addData() {
-    const randomElementIndex = Math.floor(Math.random() * ELEMENT_DATA.length);
-    this.dataSource.push(ELEMENT_DATA[randomElementIndex]);
-    this.table.renderRows();
+  addRoom() {
+    this.dialog.open(AddNewRoomComponent);
   }
 
-  removeData() {
-    this.dataSource.pop();
-    this.table.renderRows();
+  addRoomType() {
+    this.dialog.open(AddNewRoomTypeComponent);
   }
 
 }

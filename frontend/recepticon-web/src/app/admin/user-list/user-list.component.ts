@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { PeriodicElement } from 'src/app/shared/components/guest-list/guest-list.component';
+import { AddNewUserComponent } from '../add-new-user/add-new-user.component';
 
 @Component({
   selector: 'app-user-list',
@@ -15,12 +17,13 @@ export class UserListComponent implements OnInit {
   @ViewChild(MatTable)
   table!: MatTable<PeriodicElement>;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
   addNewUser() {
+    this.dialog.open(AddNewUserComponent);
 
   }
 
