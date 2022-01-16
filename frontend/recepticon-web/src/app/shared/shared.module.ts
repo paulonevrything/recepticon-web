@@ -5,9 +5,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { NewBookingComponent } from './components/new-booking/new-booking.component';
 import { GuestListComponent } from './components/guest-list/guest-list.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { BookingComponent } from './components/booking/booking.component';
 
 @NgModule({
-  declarations: [ToolbarComponent, NewBookingComponent, GuestListComponent],
+  declarations: [ToolbarComponent, NewBookingComponent, GuestListComponent, NavbarComponent, BookingComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -20,7 +23,10 @@ import { GuestListComponent } from './components/guest-list/guest-list.component
     NewBookingComponent,
     GuestListComponent,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    LayoutModule,
+    NavbarComponent,
+    BookingComponent
   ]
 })
 export class SharedModule { }
