@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Api/Recepticon.Api.csproj": {}
+    "/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Persistence/Recepticon.Persistence.csproj": {}
   },
   "projects": {
-    "/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Api/Recepticon.Api.csproj": {
+    "/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Persistence/Recepticon.Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Api/Recepticon.Api.csproj",
-        "projectName": "Recepticon.Api",
-        "projectPath": "/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Api/Recepticon.Api.csproj",
+        "projectUniqueName": "/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Persistence/Recepticon.Persistence.csproj",
+        "projectName": "Recepticon.Persistence",
+        "projectPath": "/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Persistence/Recepticon.Persistence.csproj",
         "packagesPath": "/Users/paulolabisi/.nuget/packages/",
-        "outputPath": "/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Api/obj/",
+        "outputPath": "/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Persistence/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/paulolabisi/.config/NuGet/NuGet.Config"
@@ -37,12 +37,6 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "dependencies": {
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.2.3, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -54,9 +48,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

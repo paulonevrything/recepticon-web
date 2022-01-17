@@ -1,4 +1,28 @@
 ﻿<Properties StartupConfiguration="{0886FA72-4875-4480-BE33-05ABF675F51B}|Default">
-  <MonoDevelop.Ide.ItemProperties.Recepticon.Api FirstBuild="True" />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Recepticon" expanded="True">
+            <Node name="Recepticon.Api" expanded="True">
+              <Node name="Startup.cs" selected="True" />
+            </Node>
+            <Node name="Recepticon.Core" expanded="True" />
+            <Node name="Recepticon.Domain" expanded="True" />
+            <Node name="Recepticon.Persistence" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Recepticon.Core FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.Recepticon.Domain FirstBuild="True" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Recepticon.Api PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.ItemProperties.Recepticon.Persistence FirstBuild="True" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

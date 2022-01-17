@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "C5Zoc3UG9pMUTXm/2blKwH+CDzljJMWJvnSa/pXj9q3wk1MpCqI1vxDU5canu1dzNbevJyDQTqNY5EYW6JyM8g==",
+  "dgSpecHash": "rYo0pQmunORqd7WUUSrD7I45EJ5877BAelTUoYGl5cKdi47YOBqQ6cvcMixG1LRjZv6qVXUyMY6Yh4XG9yGMQg==",
   "success": true,
   "projectFilePath": "/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Api/Recepticon.Api.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/paulolabisi/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "/Users/paulolabisi/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/paulolabisi/.nuget/packages/swashbuckle.aspnetcore/6.2.3/swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "/Users/paulolabisi/.nuget/packages/swashbuckle.aspnetcore.swagger/6.2.3/swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "/Users/paulolabisi/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.2.3/swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "/Users/paulolabisi/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.2.3/swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
   "logs": []
 }
