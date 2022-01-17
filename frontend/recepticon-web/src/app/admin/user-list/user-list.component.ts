@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { PeriodicElement } from 'src/app/shared/components/guest-list/guest-list.component';
-import { AddNewUserComponent } from '../add-new-user/add-new-user.component';
+import { AddNewUserComponent } from '../components/add-new-user/add-new-user.component';
 
 @Component({
   selector: 'app-user-list',

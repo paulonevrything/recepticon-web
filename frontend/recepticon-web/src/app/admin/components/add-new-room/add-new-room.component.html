@@ -1,18 +1,18 @@
-<form class="example-form">
+<form class="example-form" [formGroup]="newRoomFormGroup">
 
     <table class="full-width" cellspacing="0">
         <tr>
             <td>
                 <mat-form-field class="full-width" appearance="fill">
                     <mat-label>Room number</mat-label>
-                    <input matInput>
+                    <input type="text" matInput formControlName="roomNumber">
                 </mat-form-field>
             </td>
             <td>
                 <mat-form-field class="full-width" appearance="fill">
                     <mat-label>Room type</mat-label>
 
-                    <mat-select formControlName="roomType">
+                    <mat-select formControlName="roomType" formControlName="roomType">
                         <mat-option value="option">Executive</mat-option>
                         <mat-option value="option">Royal</mat-option>
                     </mat-select>
@@ -20,5 +20,5 @@
             </td>
         </tr>
     </table>
-    <button mat-raised-button color="primary">Save</button>
+    <button mat-raised-button [disabled]='!newRoomFormGroup.valid' color="primary" (click)="addNewRoom(newRoomFormGroup.value)">Save</button>
 </form>

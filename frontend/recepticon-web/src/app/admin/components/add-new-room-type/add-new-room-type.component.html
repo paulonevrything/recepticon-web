@@ -1,21 +1,21 @@
-<form class="example-form">
+<form class="example-form" [formGroup]="newRoomTypeFormGroup">
 
     <table class="full-width" cellspacing="0">
         <tr>
             <td>
                 <mat-form-field class="full-width" appearance="fill">
                     <mat-label>Room type</mat-label>
-                    <input matInput>
+                    <input type="text" matInput formControlName="roomType">
                 </mat-form-field>
             </td>
             <td>
                 <mat-form-field class="full-width" appearance="fill">
                     <mat-label>Price</mat-label>
-                    <input matInput>
+                    <input type="number" matInput formControlName="price">
                 </mat-form-field>
             </td>
         </tr>
     </table>
-    <button mat-raised-button color="primary">Save</button>
+    <button mat-raised-button color="primary" [disabled]='!newRoomTypeFormGroup.valid' (click)="addNewRoomType(newRoomTypeFormGroup.value)">Save</button>
 
 </form>

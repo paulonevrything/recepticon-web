@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { PeriodicElement } from 'src/app/shared/components/guest-list/guest-list.component';
-import { AddNewRoomTypeComponent } from '../add-new-room-type/add-new-room-type.component';
-import { AddNewRoomComponent } from '../add-new-room/add-new-room.component';
+import { AddNewRoomTypeComponent } from '../components/add-new-room-type/add-new-room-type.component';
+import { AddNewRoomComponent } from '../components/add-new-room/add-new-room.component';
 
 @Component({
   selector: 'app-room-list',
