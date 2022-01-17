@@ -1,16 +1,9 @@
 h1 {
-    margin-top: 20px;
+    padding: 20px;
     text-align: center;
 }
-
-
-/* TODO: Do responsive contianer */
 
 .container {
     max-width: 800px;
     margin: auto;
-}
-
-.container-content {
-    margin: 10px;
 }

@@ -2,26 +2,30 @@
 
 <div class="container">
 
-    <form class="form-login">
+    <form class="form-login" [formGroup]="loginFormGroup">
 
         <mat-form-field class="full-width" appearance="fill">
             <mat-label>Username</mat-label>
-            <input matInput>
+            <input type="text" formControlName="username" matInput>
         </mat-form-field>
 
-        <mat-form-field class="full-width" appearance="fill">
+        <mat-form-field *ngIf="!fieldTextType" class="full-width" appearance="fill">
             <mat-label>Password</mat-label>
-            <input type="password" matInput>
-            <mat-icon matSuffix>lock</mat-icon>
+            <input type="password" formControlName="password" matInput>
+            <button matSuffix mat-icon-button (click)="toggleFieldTextType()">
+                <mat-icon>lock_open</mat-icon>
+            </button>
         </mat-form-field>
 
-        <mat-form-field class="full-width" appearance="fill">
+        <mat-form-field *ngIf="fieldTextType" class="full-width" appearance="fill">
             <mat-label>Password</mat-label>
-            <input type="password" matInput>
-            <mat-icon matSuffix>lock_open</mat-icon>
+            <input type="text" formControlName="password" matInput>
+            <button matSuffix mat-icon-button (click)="toggleFieldTextType()">
+                <mat-icon>lock</mat-icon>
+            </button>
         </mat-form-field>
 
-        <button mat-raised-button color="primary">Login</button>
+        <button mat-raised-button [disabled]='!loginFormGroup.valid' color="primary" (click)="login(loginFormGroup.value)">Login</button>
 
     </form>
 
