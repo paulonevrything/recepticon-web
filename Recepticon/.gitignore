@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/csharp,dotnetcore,visualstudio,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=csharp,dotnetcore,visualstudio,visualstudiocode
+# Created by https://www.toptal.com/developers/gitignore/api/macos,csharp,dotnetcore,visualstudiocode,visualstudio
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,csharp,dotnetcore,visualstudiocode,visualstudio
 
 ### Csharp ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -409,6 +409,35 @@ obj/
 /node_modules
 /wwwroot/node_modules
 
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
 ### VisualStudioCode ###
 !.vscode/*.code-snippets
 
@@ -605,4 +634,4 @@ obj/
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
-# End of https://www.toptal.com/developers/gitignore/api/csharp,dotnetcore,visualstudio,visualstudiocode
+# End of https://www.toptal.com/developers/gitignore/api/macos,csharp,dotnetcore,visualstudiocode,visualstudio
