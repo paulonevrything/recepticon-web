@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Recepticon.Core.Services.Interfaces;
 using Recepticon.Domain.Models;
 
 namespace Recepticon.Api.Controllers
@@ -13,9 +14,11 @@ namespace Recepticon.Api.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        public UserController()
-        {
+        private IUserService _userService;
 
+        public UserController(IUserService userService)
+        {
+            _userService = userService;
         }
 
         [AllowAnonymous]

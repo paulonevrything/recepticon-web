@@ -1,13 +1,26 @@
 ﻿<Properties StartupConfiguration="{0886FA72-4875-4480-BE33-05ABF675F51B}|Default">
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Recepticon.Domain/Models/AuthenticateModel.cs">
     <Files>
       <File FileName="Recepticon.Api/Controllers/UserController.cs" Line="25" Column="50" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Recepticon.Api/Startup.cs">
+    <Files>
+      <File FileName="Recepticon.Api/Controllers/UserController.cs" Line="28" Column="50" />
+>>>>>>> 7bbd385f22181c7457a949153934483f64c74e4c
       <File FileName="Recepticon.Domain/Entities/User.cs" Line="13" Column="19" />
       <File FileName="Recepticon.Domain/Models/AuthenticateModel.cs" Line="13" Column="6" />
       <File FileName="Recepticon.Domain/Models/Role.cs" Line="6" Column="28" />
+<<<<<<< HEAD
       <File FileName="Recepticon.Core/Services/Interfaces/IUserService.cs" Line="6" Column="1" />
       <File FileName="Recepticon.Core/Services/UserService.cs" Line="10" Column="1" />
       <File FileName="Recepticon.Api/Startup.cs" Line="15" Column="32" />
+=======
+      <File FileName="Recepticon.Core/Services/Interfaces/IUserService.cs" Line="10" Column="28" />
+      <File FileName="Recepticon.Core/Services/UserService.cs" Line="15" Column="27" />
+      <File FileName="Recepticon.Core/Helpers/BasicAuthenticationHandler.cs" Line="21" Column="59" />
+      <File FileName="Recepticon.Api/Startup.cs" Line="35" Column="1" />
+>>>>>>> 7bbd385f22181c7457a949153934483f64c74e4c
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,6 +28,7 @@
           <Node name="Recepticon" expanded="True">
             <Node name="Recepticon.Api" expanded="True">
               <Node name="Controllers" expanded="True" />
+              <Node name="Startup.cs" selected="True" />
             </Node>
             <Node name="Recepticon.Core" expanded="True">
               <Node name="Services" expanded="True" />
