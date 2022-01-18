@@ -1,14 +1,30 @@
 ﻿<Properties StartupConfiguration="{0886FA72-4875-4480-BE33-05ABF675F51B}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Recepticon.Core/Services/UserService.cs">
+    <Files>
+      <File FileName="Recepticon.Api/Controllers/UserController.cs" Line="31" Column="10" />
+      <File FileName="Recepticon.Domain/Entities/User.cs" Line="13" Column="19" />
+      <File FileName="Recepticon.Domain/Models/AuthenticateModel.cs" Line="11" Column="18" />
+      <File FileName="Recepticon.Domain/Models/Role.cs" Line="6" Column="28" />
+      <File FileName="Recepticon.Core/Services/Interfaces/IUserService.cs" Line="1" Column="1" />
+      <File FileName="Recepticon.Core/Services/UserService.cs" Line="4" Column="37" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Recepticon" expanded="True">
             <Node name="Recepticon.Api" expanded="True">
-              <Node name="Startup.cs" selected="True" />
+              <Node name="Controllers" expanded="True" />
             </Node>
-            <Node name="Recepticon.Core" expanded="True" />
-            <Node name="Recepticon.Domain" expanded="True" />
+            <Node name="Recepticon.Core" expanded="True">
+              <Node name="Services" expanded="True">
+                <Node name="Interfaces" expanded="True" />
+                <Node name="UserService.cs" selected="True" />
+              </Node>
+            </Node>
+            <Node name="Recepticon.Domain" expanded="True">
+              <Node name="Entities" expanded="True" />
+              <Node name="Models" expanded="True" />
+            </Node>
             <Node name="Recepticon.Persistence" expanded="True" />
           </Node>
         </State>

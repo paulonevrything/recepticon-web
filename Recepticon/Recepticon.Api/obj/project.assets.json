@@ -72,6 +72,26 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "Recepticon.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Recepticon.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Recepticon.Core.dll": {}
+        }
+      },
+      "Recepticon.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Recepticon.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Recepticon.Domain.dll": {}
+        }
       }
     }
   },
@@ -200,10 +220,22 @@
         "swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "Recepticon.Core/1.0.0": {
+      "type": "project",
+      "path": "../Recepticon.Core/Recepticon.Core.csproj",
+      "msbuildProject": "../Recepticon.Core/Recepticon.Core.csproj"
+    },
+    "Recepticon.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Recepticon.Domain/Recepticon.Domain.csproj",
+      "msbuildProject": "../Recepticon.Domain/Recepticon.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Recepticon.Core >= 1.0.0",
+      "Recepticon.Domain >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.2.3"
     ]
   },
@@ -231,7 +263,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Core/Recepticon.Core.csproj": {
+              "projectPath": "/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Core/Recepticon.Core.csproj"
+            },
+            "/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Domain/Recepticon.Domain.csproj": {
+              "projectPath": "/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Domain/Recepticon.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
