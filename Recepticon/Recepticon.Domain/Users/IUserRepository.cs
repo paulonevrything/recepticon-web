@@ -1,5 +1,5 @@
 ﻿using System;
-using Recepticon.Persistence.Domain.Interfaces;
+using Recepticon.Domain.Interfaces;
 
 namespace Recepticon.Domain.Users
 {

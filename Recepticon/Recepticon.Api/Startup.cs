@@ -4,9 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,6 +16,10 @@ using Microsoft.OpenApi.Models;
 using Recepticon.Core.Helpers;
 using Recepticon.Core.Services;
 using Recepticon.Core.Services.Interfaces;
+using Recepticon.Domain.Interfaces;
+using Recepticon.Domain.Users;
+using Recepticon.Persistence;
+using Recepticon.Persistence.Repositories;
 
 namespace Recepticon.Api
 {
@@ -61,7 +67,23 @@ namespace Recepticon.Api
             services.AddAuthentication("BasicAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
+            services.AddDbContext<RecepticonDbContext>(options =>
+            {
+                options.UseInMemoryDatabase("RecepticonDB");
+                //options.UseSqlServer(Configuration.GetConnectionString("RecepticonConnection"));
+            });
+
+
+            services.AddAutoMapper(typeof(Startup));
+
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<DbFactory>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<BasicAuthenticationHandler>();
+            services.AddScoped<Func<RecepticonDbContext>>((provider) => () => provider.GetService<RecepticonDbContext>());
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Recepticon.Domain.Base;
-using Recepticon.Persistence.Domain.Interfaces;
+using Recepticon.Domain.Interfaces;
 
 namespace Recepticon.Persistence
 {

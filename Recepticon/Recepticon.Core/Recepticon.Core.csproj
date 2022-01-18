@@ -15,6 +15,8 @@
     <None Remove="Microsoft.AspNetCore.Authentication.Abstractions" />
     <None Remove="Microsoft.AspNetCore.Authentication.Core" />
     <None Remove="Microsoft.AspNetCore.Authentication" />
+    <None Remove="AutoMapper" />
+    <None Remove="AutoMapper.Extensions.Microsoft.DependencyInjection" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
@@ -32,5 +34,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Core" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="AutoMapper" Version="11.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
   </ItemGroup>
 </Project>
