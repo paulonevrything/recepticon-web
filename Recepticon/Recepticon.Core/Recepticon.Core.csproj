@@ -1,8 +1,36 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <!-- <OutputType>Exe</OutputType> -->
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Services\" />
+    <None Remove="Services\Interfaces\" />
+    <None Remove="Helpers\" />
+    <None Remove="Microsoft.AspNetCore" />
+    <None Remove="Microsoft.AspNetCore.Authorization" />
+    <None Remove="Microsoft.AspNetCore.Authorization.Policy" />
+    <None Remove="Microsoft.AspNetCore.Authentication.Abstractions" />
+    <None Remove="Microsoft.AspNetCore.Authentication.Core" />
+    <None Remove="Microsoft.AspNetCore.Authentication" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Services\Interfaces\" />
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Recepticon.Domain\Recepticon.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+   <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authorization.Policy" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Core" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+  </ItemGroup>
 </Project>

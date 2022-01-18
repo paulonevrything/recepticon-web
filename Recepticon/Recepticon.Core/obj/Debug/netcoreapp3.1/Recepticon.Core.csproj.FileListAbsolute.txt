@@ -1,0 +1,16 @@
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Core/bin/Debug/netcoreapp3.1/Recepticon.Domain.deps.json
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Core/bin/Debug/netcoreapp3.1/Recepticon.Domain.runtimeconfig.json
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Core/bin/Debug/netcoreapp3.1/Recepticon.Domain.runtimeconfig.dev.json
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Core/bin/Debug/netcoreapp3.1/Recepticon.Core.deps.json
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Core/bin/Debug/netcoreapp3.1/Recepticon.Core.dll
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Core/bin/Debug/netcoreapp3.1/Recepticon.Core.pdb
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Core/bin/Debug/netcoreapp3.1/Recepticon.Domain.dll
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Core/bin/Debug/netcoreapp3.1/Recepticon.Domain.pdb
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Core/obj/Debug/netcoreapp3.1/Recepticon.Core.csproj.AssemblyReference.cache
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Core/obj/Debug/netcoreapp3.1/Recepticon.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Core/obj/Debug/netcoreapp3.1/Recepticon.Core.AssemblyInfoInputs.cache
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Core/obj/Debug/netcoreapp3.1/Recepticon.Core.AssemblyInfo.cs
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Core/obj/Debug/netcoreapp3.1/Recepticon.Core.csproj.CoreCompileInputs.cache
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Core/obj/Debug/netcoreapp3.1/Recepticon.Core.csproj.CopyComplete
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Core/obj/Debug/netcoreapp3.1/Recepticon.Core.dll
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Core/obj/Debug/netcoreapp3.1/Recepticon.Core.pdb
