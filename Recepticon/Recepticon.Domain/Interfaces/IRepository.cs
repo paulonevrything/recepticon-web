@@ -12,5 +12,6 @@ namespace Recepticon.Domain.Interfaces
         void Delete(T entity);
         void Update(T entity);
         IQueryable<T> List(Expression<Func<T, bool>> expression);
+        IEnumerable<T> GetAll();
     }
 }

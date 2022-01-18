@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
+using Recepticon.Domain.Models;
 using Recepticon.Domain.Users;
 
 namespace Recepticon.Persistence
@@ -20,6 +21,7 @@ namespace Recepticon.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>().HasData(new User { Id = 1, FirstName = "John", LastName = "Doe", Password = "string", Role = Role.ADMIN, IsDeleted = false, Username = "string" });
         }
     }
 }

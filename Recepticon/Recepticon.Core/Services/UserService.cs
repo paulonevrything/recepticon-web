@@ -26,6 +26,8 @@ namespace Recepticon.Core.Services
 
         public async Task<User> Authenticate(string username, string password)
         {
+            var rees = _userRepository.GetAll();
+
             var userList = _userRepository.List(x => x.Username == username && x.Password == password).ToList();
 
             if (userList.Count < 1 || userList[0] == null)

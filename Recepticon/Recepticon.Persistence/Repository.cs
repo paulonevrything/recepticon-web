@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
@@ -54,6 +55,11 @@ namespace Recepticon.Persistence
                 ((IAuditEntity)entity).UpdatedDate = DateTime.UtcNow;
             }
             DbSet.Update(entity);
+        }
+
+        public IEnumerable<T> GetAll()
+        {
+           return DbSet.ToList();
         }
     }
 }
