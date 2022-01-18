@@ -22,3 +22,13 @@
 /Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Api/obj/Debug/netcoreapp3.1/Recepticon.Api.dll
 /Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Api/obj/Debug/netcoreapp3.1/Recepticon.Api.pdb
 /Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Api/obj/Debug/netcoreapp3.1/Recepticon.Api.genruntimeconfig.cache
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Api/bin/Debug/netcoreapp3.1/Recepticon.Domain.deps.json
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Api/bin/Debug/netcoreapp3.1/Recepticon.Domain.runtimeconfig.json
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Api/bin/Debug/netcoreapp3.1/Recepticon.Domain.runtimeconfig.dev.json
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Api/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Server.Kestrel.Https.dll
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Api/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Api/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Api/bin/Debug/netcoreapp3.1/Recepticon.Core.dll
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Api/bin/Debug/netcoreapp3.1/Recepticon.Domain.dll
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Api/bin/Debug/netcoreapp3.1/Recepticon.Core.pdb
+/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Api/bin/Debug/netcoreapp3.1/Recepticon.Domain.pdb

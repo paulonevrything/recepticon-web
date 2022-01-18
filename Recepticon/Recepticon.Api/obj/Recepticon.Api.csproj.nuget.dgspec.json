@@ -93,7 +93,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
-            "projectReferences": {}
+            "projectReferences": {
+              "/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Domain/Recepticon.Domain.csproj": {
+                "projectPath": "/Users/paulolabisi/Desktop/C#/recepticon-web/recepticon-web/Recepticon/Recepticon.Domain/Recepticon.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -105,6 +109,32 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.AspNetCore": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.Core": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authorization": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Microsoft.AspNetCore.Authorization.Policy": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -116,6 +146,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
