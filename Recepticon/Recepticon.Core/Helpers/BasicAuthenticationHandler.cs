@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Recepticon.Core.Services.Interfaces;
-using Recepticon.Domain.Entities;
+using Recepticon.Domain.Users;
 
 namespace Recepticon.Core.Helpers
 {

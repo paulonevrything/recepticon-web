@@ -1,11 +1,13 @@
 ﻿using System;
 using Recepticon.Domain.Models;
+using Recepticon.Domain.Base;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Recepticon.Domain.Entities
+namespace Recepticon.Domain.Users
 {
-    public class User
+    [Table("Users")]
+    public partial class User : DeleteEntity<int>
     {
-        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Username { get; set; }

@@ -7,13 +7,15 @@
 
   <ItemGroup>
     <None Remove="Repositories\" />
-    <None Remove="Repositories\Interfaces\" />
+    <None Remove="Microsoft.EntityFrameworkCore" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\" />
-    <Folder Include="Repositories\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Recepticon.Domain\Recepticon.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.22" />
   </ItemGroup>
 </Project>

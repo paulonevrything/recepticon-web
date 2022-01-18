@@ -1,7 +1,7 @@
 ﻿using System;
-using Recepticon.Domain.Entities;
+using Recepticon.Persistence.Domain.Interfaces;
 
-namespace Recepticon.Persistence.Repositories.Interfaces
+namespace Recepticon.Domain.Users
 {
     public interface IUserRepository : IRepository<User>
     {

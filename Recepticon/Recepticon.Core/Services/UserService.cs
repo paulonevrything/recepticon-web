@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Recepticon.Core.Services.Interfaces;
-using Recepticon.Domain.Entities;
+using Recepticon.Domain.Users;
 
 namespace Recepticon.Core.Services
 {
