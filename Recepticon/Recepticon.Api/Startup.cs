@@ -69,8 +69,7 @@ namespace Recepticon.Api
 
             services.AddDbContext<RecepticonDbContext>(options =>
             {
-                options.UseInMemoryDatabase("RecepticonDB");
-                //options.UseSqlServer(Configuration.GetConnectionString("RecepticonConnection"));
+                options.UseSqlServer(Configuration.GetConnectionString("RecepticonConnection"));
             });
 
 
