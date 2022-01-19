@@ -14,12 +14,17 @@
     <None Remove="AutoMapper.Extensions.Microsoft.DependencyInjection" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.22">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.22" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.22" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.22" />
     <PackageReference Include="AutoMapper" Version="11.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.2.3" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Recepticon.Core\Recepticon.Core.csproj">
