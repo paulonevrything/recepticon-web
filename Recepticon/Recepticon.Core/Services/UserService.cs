@@ -35,9 +35,14 @@ namespace Recepticon.Core.Services
             try
             {
 
-                var existingUsers = _userRepository.List(x => x.Username == username && x.Password == BCryptNet.HashPassword(password)).ToList();
+                var existingUser = _userRepository.List(x => x.Username == username).FirstOrDefault();
 
-                return existingUsers[0];
+                if(BCryptNet.Verify(password, existingUser.Password))
+                {
+                    return existingUser;
+                }
+
+                return null;
 
             } catch(Exception ex)
             {
@@ -47,21 +52,23 @@ namespace Recepticon.Core.Services
 
         }
 
-        public void Create(UserDTO model)
+        public async Task<User> Create(UserDTO model)
         {
             try
             {
-                var existingUsers = _userRepository.List(x => x.Username == model.Username).ToList();
+                var existingUser = _userRepository.List(x => x.Username == model.Username).FirstOrDefault();
 
-                if (existingUsers.Count > 0)
-                    throw new CustomException("User with the email '" + model.Username + "' already exists");
+                if (existingUser != null)
+                    throw new CustomException("User with the username '" + model.Username + "' already exists");
 
                 var user =_mapper.Map<User>(model);
 
                 user.Password = BCryptNet.HashPassword(model.Password);
 
                 _userRepository.Add(user);
-                _unitOfWork.CommitAsync();
+                await _unitOfWork.CommitAsync();
+
+                return user;
 
             }
             catch (Exception ex)
@@ -93,6 +100,7 @@ namespace Recepticon.Core.Services
         {
             try
             {
+                // TODO: exclude current user from list
                 var userList = _userRepository.GetAll().ToList();
 
                 return userList;
@@ -109,7 +117,6 @@ namespace Recepticon.Core.Services
         {
             try
             {
-
                 return GetUser(id);
             }
             catch (Exception ex)

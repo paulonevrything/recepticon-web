@@ -65,7 +65,7 @@ namespace Recepticon.Api
 
             // configure basic authentication 
             services.AddAuthentication("BasicAuthentication")
-                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", options => { });
 
             services.AddDbContext<RecepticonDbContext>(options =>
             {
@@ -101,6 +101,8 @@ namespace Recepticon.Api
 
             app.UseRouting();
 
+            app.UseAuthentication();
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -114,7 +116,6 @@ namespace Recepticon.Api
                 options.RoutePrefix = string.Empty;
             });
 
-            app.UseAuthentication();
         }
     }
 }

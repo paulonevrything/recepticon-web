@@ -37,15 +37,14 @@ namespace Recepticon.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var users = await _userService.GetAll();
 
-            return Ok(users);
+            return Ok(await _userService.GetAll());
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetByIdAsync(int id)
         {
             if (id < 0)
             {
@@ -61,38 +60,35 @@ namespace Recepticon.Api.Controllers
             return Ok(users);
         }
 
-        [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] UserDTO user)
+        public async Task<IActionResult> CreateAsync([FromBody] UserDTO user)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            _userService.Create(user);
-
-            return Ok(new { message = "User created" });
+            return Ok(await _userService.Create(user));
         }
 
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] UserDTO user)
+        public async Task<IActionResult> UpdateAsync(int id, [FromBody] UserDTO user)
         {
             if(!ModelState.IsValid)
                 return BadRequest();
 
-            return Ok(_userService.Update(id, user));
+            return Ok(await _userService.Update(id, user));
         }
 
         [HttpDelete("{id}")]
         [SwaggerResponse((int)HttpStatusCode.NotFound, Type = typeof(UserDTO), Description = "Applicant {id} is not found in the record")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> DeleteAsync(int id)
         {
             if (id < 0)
             {
                 return BadRequest();
             }
 
-            return Ok(_userService.DeleteUser(id));
+            return Ok(await _userService.DeleteUser(id));
         }
     }
 }
