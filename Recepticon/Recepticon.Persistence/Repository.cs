@@ -48,6 +48,11 @@ namespace Recepticon.Persistence
             return DbSet.Where(expression);
         }
 
+        public T Find(int id)
+        {
+            return DbSet.Find(id);
+        }
+
         public void Update(T entity)
         {
             if (typeof(IAuditEntity).IsAssignableFrom(typeof(T)))

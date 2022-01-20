@@ -14,6 +14,10 @@ namespace Recepticon.Api.Controllers
     [ApiController]
     public class GuestsController : ControllerBase
     {
+        public GuestsController()
+        {
+
+        }
         // GET: api/<GuestsController>
         [HttpGet]
         public IEnumerable<string> Get()

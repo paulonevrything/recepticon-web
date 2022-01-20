@@ -2,6 +2,7 @@
 using Recepticon.Domain.Models;
 using Recepticon.Domain.Base;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Recepticon.Domain.Users
 {
@@ -11,6 +12,7 @@ namespace Recepticon.Domain.Users
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Username { get; set; }
+        [JsonIgnore]
         public string Password { get; set; }
         public Role Role { get; set; }
     }

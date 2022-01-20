@@ -11,6 +11,7 @@ namespace Recepticon.Domain.Interfaces
         void Add(T entity);
         void Delete(T entity);
         void Update(T entity);
+        T Find(int id);
         IQueryable<T> List(Expression<Func<T, bool>> expression);
         IEnumerable<T> GetAll();
     }

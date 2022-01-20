@@ -61,13 +61,24 @@ namespace Recepticon.Api.Controllers
             return Ok(users);
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Update(int id, User user)
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] UserDTO user)
         {
-            if (id < 0 || id != user.Id)
-            {
+            if (!ModelState.IsValid)
                 return BadRequest();
-            }
+
+            _userService.Create(user);
+
+            return Ok(new { message = "User created" });
+        }
+
+
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, [FromBody] UserDTO user)
+        {
+            if(!ModelState.IsValid)
+                return BadRequest();
 
             return Ok(_userService.Update(id, user));
         }
