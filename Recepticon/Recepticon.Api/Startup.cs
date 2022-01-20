@@ -16,7 +16,10 @@ using Microsoft.OpenApi.Models;
 using Recepticon.Core.Helpers;
 using Recepticon.Core.Services;
 using Recepticon.Core.Services.Interfaces;
+using Recepticon.Domain.Guest;
 using Recepticon.Domain.Interfaces;
+using Recepticon.Domain.Rooms;
+using Recepticon.Domain.RoomTypes;
 using Recepticon.Domain.Users;
 using Recepticon.Persistence;
 using Recepticon.Persistence.Repositories;
@@ -76,8 +79,13 @@ namespace Recepticon.Api
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IRoomService, RoomService>();
+            services.AddScoped<IGuestService, GuestService>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IRoomRepository, RoomRepository>();
+            services.AddScoped<IRoomTypeRepository, RoomTypeRepository>();
+            services.AddScoped<IGuestRepository, GuestRepository>();
             services.AddScoped<DbFactory>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<BasicAuthenticationHandler>();

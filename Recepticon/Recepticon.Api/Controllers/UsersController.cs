@@ -51,13 +51,13 @@ namespace Recepticon.Api.Controllers
                 return BadRequest();
             }
 
-            var users = await _userService.GetById(id);
+            var user = await _userService.GetById(id);
 
-            if(users == null)
+            if(user == null)
             {
                 return NotFound();
             }
-            return Ok(users);
+            return Ok(user);
         }
 
         [HttpPost]
@@ -80,7 +80,6 @@ namespace Recepticon.Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        [SwaggerResponse((int)HttpStatusCode.NotFound, Type = typeof(UserDTO), Description = "Applicant {id} is not found in the record")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             if (id < 0)
