@@ -4,6 +4,9 @@
     <button mat-button><a href="https://github.com/paulonevrything/recepticon-web">API Documentation</a></button>
     <button mat-button><a href="https://github.com/paulonevrything/recepticon-web">Github Repo</a></button>
     <button mat-icon-button *ngIf="loggedIn">
-        <mat-icon>person</mat-icon>
+        <mat-icon [matMenuTriggerFor]="userMenu">person</mat-icon>
     </button>
+    <mat-menu #userMenu="matMenu" xPosition="before">
+        <button mat-menu-item (click)="logOut()">Logout</button>
+    </mat-menu>
 </mat-toolbar>

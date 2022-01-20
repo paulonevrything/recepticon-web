@@ -16,6 +16,7 @@ namespace Recepticon.Core.Services
 {
     public class UserService : IUserService
     {
+        // TODO: Add cache to get endpoints
         private readonly IUnitOfWork _unitOfWork;
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
@@ -37,7 +38,7 @@ namespace Recepticon.Core.Services
 
                 var existingUser = _userRepository.List(x => x.Username == username).FirstOrDefault();
 
-                if(BCryptNet.Verify(password, existingUser.Password))
+                if(existingUser != null && BCryptNet.Verify(password, existingUser.Password))
                 {
                     return existingUser;
                 }

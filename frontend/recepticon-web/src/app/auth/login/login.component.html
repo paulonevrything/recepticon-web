@@ -25,7 +25,8 @@
             </button>
         </mat-form-field>
 
-        <button mat-raised-button [disabled]='!loginFormGroup.valid' color="primary" (click)="login(loginFormGroup.value)">Login</button>
+        <button *ngIf="!showSpinner" mat-raised-button [disabled]='!loginFormGroup.valid' color="primary" (click)="login(loginFormGroup.value)">Login</button>
+        <mat-spinner [diameter]="50" *ngIf="showSpinner"></mat-spinner>
 
     </form>
 
