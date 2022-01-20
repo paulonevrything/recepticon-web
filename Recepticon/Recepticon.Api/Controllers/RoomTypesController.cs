@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Recepticon.Core.Services.Interfaces;
-using Recepticon.Domain.Rooms;
+using Recepticon.Domain.RoomTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +10,12 @@ using System.Threading.Tasks;
 
 namespace Recepticon.Api.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class RoomsController : ControllerBase
+    public class RoomTypesController : ControllerBase
     {
         private IRoomService _roomService;
-        public RoomsController(IRoomService roomService)
+        public RoomTypesController(IRoomService roomService)
         {
             _roomService = roomService;
         }
@@ -27,18 +25,18 @@ namespace Recepticon.Api.Controllers
         public async Task<IActionResult> GetAllRoomsAsync()
         {
 
-            return Ok(await _roomService.GetAllRooms());
+            return Ok(await _roomService.GetAllRoomTypes());
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetRoomByIdAsync(int id)
+        public async Task<IActionResult> GetByIdAsync(int id)
         {
             if (id < 0)
             {
                 return BadRequest();
             }
 
-            var room = await _roomService.GetRoomById(id);
+            var room = await _roomService.GetRoomTypeById(id);
 
             if (room == null)
             {
@@ -48,21 +46,21 @@ namespace Recepticon.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAsync([FromBody] Room room)
+        public async Task<IActionResult> CreateAsync([FromBody] RoomType roomType)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            return Ok(await _roomService.CreateRoom(room));
+            return Ok(await _roomService.CreateRoomType(roomType));
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAsync(int id, [FromBody] Room room)
+        public async Task<IActionResult> UpdateAsync(int id, [FromBody] RoomType roomType)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            return Ok(await _roomService.UpdateRoom(id, room));
+            return Ok(await _roomService.UpdateRoomType(id, roomType));
         }
 
         [HttpDelete("{id}")]
@@ -73,7 +71,7 @@ namespace Recepticon.Api.Controllers
                 return BadRequest();
             }
 
-            return Ok(await _roomService.DeleteRoom(id));
+            return Ok(await _roomService.DeleteRoomType(id));
         }
     }
 }
