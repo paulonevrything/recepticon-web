@@ -9,9 +9,10 @@ namespace Recepticon.Core.Services.Interfaces
     public interface IUserService
     {
         Task<User> Authenticate(string username, string password);
+        Task<User> Create(UserDTO model);
         Task<IEnumerable<User>> GetAll();
         Task<User> GetById(int id);
-        Task<User> Update(int id, User user);
+        Task<User> Update(int id, UserDTO user);
         Task<bool> DeleteUser(int id);
     }
 }
