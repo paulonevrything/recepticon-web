@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Recepticon.Domain.Rooms
+namespace Recepticon.Domain.Guest
 {
-    public interface IRoomRepository : IRepository<Room>
+    public interface IGuestRepository : IRepository<Guest>
     {
     }
 }
