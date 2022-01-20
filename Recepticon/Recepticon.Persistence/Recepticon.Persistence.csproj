@@ -10,9 +10,6 @@
     <None Remove="Microsoft.EntityFrameworkCore" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Recepticon.Domain\Recepticon.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Recepticon.Domain.Models;
 using Recepticon.Domain.Users;
 
 namespace Recepticon.Persistence.Repositories
@@ -12,7 +13,7 @@ namespace Recepticon.Persistence.Repositories
         {
         }
 
-        public User NewUser(string userName, string email)
+        public User NewUser(UserDTO userDTO)
         {
             var user = new User();
             this.Add(user);
