@@ -66,16 +66,5 @@ export class RecepticonService {
 
   }
 
-  // Room
-  createRoomType() {
 
-  }
-
-  createRoom() {
-
-  }
-
-  updateRoom() {
-    
-  }
 }
