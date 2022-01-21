@@ -16,6 +16,7 @@
             </td>
         </tr>
     </table>
-    <button mat-raised-button color="primary" [disabled]='!newRoomTypeFormGroup.valid' (click)="addNewRoomType(newRoomTypeFormGroup.value)">Save</button>
+    <button *ngIf="!showSpinner" mat-raised-button color="primary" [disabled]='!newRoomTypeFormGroup.valid' (click)="addNewRoomType(newRoomTypeFormGroup.value)">Save</button>
+    <mat-spinner [diameter]="50" *ngIf="showSpinner"></mat-spinner>
 
 </form>

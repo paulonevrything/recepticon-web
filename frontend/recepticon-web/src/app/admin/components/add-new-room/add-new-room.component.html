@@ -13,12 +13,12 @@
                     <mat-label>Room type</mat-label>
 
                     <mat-select formControlName="roomType" formControlName="roomType">
-                        <mat-option value="option">Executive</mat-option>
-                        <mat-option value="option">Royal</mat-option>
+                        <mat-option *ngFor="let item of roomTypes" value="{{ item.id }}">{{ item.roomTypeName }}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </td>
         </tr>
     </table>
-    <button mat-raised-button [disabled]='!newRoomFormGroup.valid' color="primary" (click)="addNewRoom(newRoomFormGroup.value)">Save</button>
+    <button *ngIf="!showSpinner" mat-raised-button [disabled]='!newRoomFormGroup.valid' color="primary" (click)="addNewRoom(newRoomFormGroup.value)">Save</button>
+    <mat-spinner [diameter]="50" *ngIf="showSpinner"></mat-spinner>
 </form>

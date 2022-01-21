@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { RecepticonService } from 'src/app/core/services/recepticon.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { RoomService } from 'src/app/core/services/room.service';
 
 @Component({
   selector: 'app-add-new-room-type',
@@ -10,8 +11,10 @@ import { RecepticonService } from 'src/app/core/services/recepticon.service';
 export class AddNewRoomTypeComponent implements OnInit {
 
   newRoomTypeFormGroup!: FormGroup;
+  showSpinner: boolean = false;
 
-  constructor(private fb: FormBuilder, private service: RecepticonService) { }
+  constructor(private fb: FormBuilder, private roomService: RoomService,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
 
@@ -30,6 +33,26 @@ export class AddNewRoomTypeComponent implements OnInit {
 
   addNewRoomType(form: any) {
 
+    this.showSpinner = true;
+
+    this.roomService.createRoomType(form.roomType, form.price).subscribe(result => {
+
+      this.showSpinner = false;
+
+      this.newRoomTypeFormGroup.reset();
+
+      console.log(result)
+      this._snackBar.open(`Successfully added ${form.roomType} Room Type`, 'Ok', {
+        duration: 3000
+      })
+    },
+      err => {
+        this.showSpinner = false;
+        console.log(err)
+        this._snackBar.open(err.message, 'Ok', {
+          duration: 3000
+        })
+      });
   }
 
 }
