@@ -14,11 +14,6 @@ export class HttpConfigInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        // const username = environment.username;
-        // const password = environment.password;
-
-        // request = request.clone({ headers: request.headers.set('Authorization', 'Basic ' + btoa(`${username}:${password}`)) });
-
         if (!request.headers.has('Content-Type')) {
             request = request.clone({ headers: request.headers.set('Content-Type', 'application/json') });
         }

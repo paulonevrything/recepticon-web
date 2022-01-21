@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
       this.showSpinner = false;
       console.log(result)
 
-      this.tokenStorage.saveToken(result.accessToken);
+      this.tokenStorage.saveToken(result.token);
       this.tokenStorage.saveUser(result);
 
       this.navigateByRole();
