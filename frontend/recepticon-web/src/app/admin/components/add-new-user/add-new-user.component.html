@@ -1,44 +1,45 @@
 <form class="example-form" [formGroup]="newUserFormGroup">
 
-  <table class="full-width" cellspacing="0">
-    <tr>
-      <td>
+    <table class="full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>First name</mat-label>
+                    <input type="text" matInput formControlName="firstName">
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Last name</mat-label>
+                    <input type="text" matInput formControlName="lastName">
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
+
+    <p>
         <mat-form-field class="full-width" appearance="fill">
-          <mat-label>First name</mat-label>
-          <input type="text" matInput formControlName="firstName">
+            <mat-label>Username</mat-label>
+            <input type="text" matInput formControlName="username" placeholder="username">
         </mat-form-field>
-      </td>
-      <td>
         <mat-form-field class="full-width" appearance="fill">
-          <mat-label>Last name</mat-label>
-          <input type="text" matInput formControlName="lastName">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password" placeholder="********">
         </mat-form-field>
-      </td>
-    </tr>
-  </table>
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Retype Password</mat-label>
+            <input type="password" matInput formControlName="confirmPassword" placeholder="*******">
+        </mat-form-field>
 
-  <p>
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Username</mat-label>
-      <input type="text" matInput formControlName="username" placeholder="username">
-    </mat-form-field>
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Password</mat-label>
-      <input type="text" matInput formControlName="password" placeholder="********">
-    </mat-form-field>
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Retype Password</mat-label>
-      <input type="text" matInput formControlName="password" placeholder="*******">
-    </mat-form-field>
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Role</mat-label>
 
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Role</mat-label>
-
-      <mat-select formControlName="role">
-        <mat-option value="option">Receptionist</mat-option>
-        <mat-option value="option">Admin</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </p>
-  <button mat-raised-button color="primary" [disabled]='!newUserFormGroup.valid' (click)="addNewUser(newUserFormGroup.value)">Save</button>
+            <mat-select formControlName="role">
+                <mat-option [value]=0>Receptionist</mat-option>
+                <mat-option [value]=1>Admin</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+    <button *ngIf="!showSpinner" mat-raised-button color="primary" [disabled]='!newUserFormGroup.valid' (click)="addNewUser(newUserFormGroup.value)">Save</button>
+    <mat-spinner [diameter]="50" *ngIf="showSpinner"></mat-spinner>
 </form>

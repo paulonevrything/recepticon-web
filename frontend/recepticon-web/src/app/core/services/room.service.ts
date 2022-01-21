@@ -31,13 +31,18 @@ export class RoomService {
       return this.http.get<RoomType>(this.baseUrl + `RoomTypes/${id}`);
     }
 
-
-    createRoomType() {
-
+    createRoomType(roomTypeName: string, price: number): Observable<any> {
+      return this.http.post(this.baseUrl + 'RoomTypes', {
+        roomTypeName: roomTypeName,
+        price: price
+      });
     }
   
-    createRoom() {
-  
+    createRoom(roomName: string, roomTypeId: number): Observable<any> {
+      return this.http.post(this.baseUrl + 'Rooms', {
+        roomName: roomName,
+        roomTypeId: roomTypeId
+      });
     }
   
     updateRoom() {

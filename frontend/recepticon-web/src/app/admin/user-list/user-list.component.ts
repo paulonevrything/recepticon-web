@@ -26,7 +26,10 @@ export class UserListComponent implements OnInit {
   }
 
   addNewUser() {
-    this.dialog.open(AddNewUserComponent);
+    let dailogRef = this.dialog.open(AddNewUserComponent);
+    dailogRef.afterClosed().subscribe(() => {
+      this.getAllUsers();
+    });
   }
 
   getAllUsers() {

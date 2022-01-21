@@ -16,6 +16,7 @@ namespace Recepticon.Api.Controllers
     [ApiController]
     public class RoomsController : ControllerBase
     {
+        //TODO: Match frontend request with api for create room - map them
         private IRoomService _roomService;
         public RoomsController(IRoomService roomService)
         {

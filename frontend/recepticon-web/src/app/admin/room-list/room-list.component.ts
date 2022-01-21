@@ -26,7 +26,11 @@ export class RoomListComponent implements OnInit {
   table!: MatTable<Room>;
 
   addRoom() {
-    this.dialog.open(AddNewRoomComponent);
+    let dialogRef = this.dialog.open(AddNewRoomComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getAllRooms();
+    });
   }
 
   addRoomType() {
@@ -34,10 +38,10 @@ export class RoomListComponent implements OnInit {
   }
 
   getAllRooms() {
-      this.roomService.getAllRooms().subscribe(data => {
-        console.log(data);
-        this.dataSource = data;
-      },
+    this.roomService.getAllRooms().subscribe(data => {
+      console.log(data);
+      this.dataSource = data;
+    },
       err => {
 
       });
