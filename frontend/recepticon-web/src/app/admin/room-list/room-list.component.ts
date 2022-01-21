@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { Room } from 'src/app/core/interfaces/room';
 import { RoomService } from 'src/app/core/services/room.service';
-import { PeriodicElement } from 'src/app/shared/components/guest-list/guest-list.component';
 import { AddNewRoomTypeComponent } from '../components/add-new-room-type/add-new-room-type.component';
 import { AddNewRoomComponent } from '../components/add-new-room/add-new-room.component';
 

@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTable } from '@angular/material/table';
-import { PeriodicElement } from 'src/app/shared/components/guest-list/guest-list.component';
+import { User } from 'src/app/core/interfaces/user';
+import { RecepticonService } from 'src/app/core/services/recepticon.service';
 import { AddNewUserComponent } from '../components/add-new-user/add-new-user.component';
 
 @Component({
@@ -11,33 +13,33 @@ import { AddNewUserComponent } from '../components/add-new-user/add-new-user.com
 })
 export class UserListComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = [...ELEMENT_DATA];
+  displayedColumns: string[] = ['firstName', 'lastName', 'username', 'role'];
+  dataSource: User[] = [];
 
   @ViewChild(MatTable)
-  table!: MatTable<PeriodicElement>;
+  table!: MatTable<User>;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private service: RecepticonService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.getAllUsers();
   }
 
   addNewUser() {
     this.dialog.open(AddNewUserComponent);
+  }
 
+  getAllUsers() {
+    this.service.getUsers().subscribe(data => {
+      console.log(data);
+      this.dataSource = data;
+    },
+      err => {
+        console.log(err)
+        this._snackBar.open(err.error.message, 'Ok', {
+          duration: 3000
+        })
+      });
   }
 
 }
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];

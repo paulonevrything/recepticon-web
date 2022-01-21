@@ -6,10 +6,9 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { NewBookingComponent } from './components/new-booking/new-booking.component';
 import { GuestListComponent } from './components/guest-list/guest-list.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
-  declarations: [ToolbarComponent, NewBookingComponent, GuestListComponent, NavbarComponent],
+  declarations: [ToolbarComponent, NewBookingComponent, GuestListComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -23,8 +22,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     GuestListComponent,
     ReactiveFormsModule,
     MaterialModule,
-    LayoutModule,
-    NavbarComponent
+    LayoutModule
   ]
 })
 export class SharedModule { }
