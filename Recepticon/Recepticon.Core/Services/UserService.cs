@@ -11,6 +11,11 @@ using Recepticon.Domain.Models;
 using Recepticon.Domain.Users;
 using System.Linq.Expressions;
 using Recepticon.Core.Helpers;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.Extensions.Options;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 
 namespace Recepticon.Core.Services
 {
@@ -21,17 +26,19 @@ namespace Recepticon.Core.Services
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
         readonly ILogger<UserService> _logger;
+        private readonly AppSettings _appSettings;
 
         public UserService(IUnitOfWork unitOfWork, IUserRepository userRepository,
-            IMapper mapper, ILogger<UserService> logger)
+            IMapper mapper, ILogger<UserService> logger, IOptions<AppSettings> appSettings)
         {
             _userRepository = userRepository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _logger = logger;
+            _appSettings = appSettings.Value;
         }
 
-        public async Task<User> Authenticate(string username, string password)
+        public async Task<AuthenticateResponseModel> Authenticate(string username, string password)
         {
             try
             {
@@ -40,7 +47,20 @@ namespace Recepticon.Core.Services
 
                 if(existingUser != null && BCryptNet.Verify(password, existingUser.Password))
                 {
-                    return existingUser;
+
+                    var token = generateJwtToken(existingUser);
+
+                    var response = new AuthenticateResponseModel()
+                    {
+                        Id = existingUser.Id,
+                        Username = username,
+                        FirstName = existingUser.FirstName,
+                        LastName = existingUser.LastName,
+                        Role = existingUser.Role,
+                        Token = token,
+                    };
+
+                    return response;
                 }
 
                 return null;
@@ -163,6 +183,20 @@ namespace Recepticon.Core.Services
             var user = _userRepository.Find(id);
             if (user == null) throw new KeyNotFoundException("User not found");
             return user;
+        }
+
+        private string generateJwtToken(User user)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
+                Expires = DateTime.UtcNow.AddDays(2),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
     }
 }

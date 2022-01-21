@@ -18,7 +18,11 @@ export class LoginComponent implements OnInit {
   showSpinner: boolean = false;
 
   constructor(private fb: FormBuilder, private service: AuthService, private router: Router,
-    private _snackBar: MatSnackBar, private tokenStorage: TokenStorageService) { }
+    private _snackBar: MatSnackBar, private tokenStorage: TokenStorageService) {
+
+    this.navigateByRole();
+
+  }
 
   ngOnInit(): void {
 
@@ -31,7 +35,8 @@ export class LoginComponent implements OnInit {
       password: new FormControl('', Validators.compose([
         Validators.required
       ]))
-    })
+    });
+
   }
 
   toggleFieldTextType() {
@@ -47,7 +52,7 @@ export class LoginComponent implements OnInit {
       this.showSpinner = false;
       console.log(result)
 
-      this.tokenStorage.saveToken(result.accessToken);
+      this.tokenStorage.saveToken(result.token);
       this.tokenStorage.saveUser(result);
 
       this.navigateByRole();
@@ -64,12 +69,16 @@ export class LoginComponent implements OnInit {
   navigateByRole() {
 
     let role = this.tokenStorage.getUser().role;
+    console.log('role here ', role);
+    if (role == undefined) {
+      return;
+    }
 
-    if(role == 1) {
+    if (role == 1) {
 
       this.router.navigateByUrl('admin');
 
-    } else {
+    } else if (role == 0) {
 
       this.router.navigateByUrl('receptionist');
 
