@@ -18,11 +18,13 @@ export class LoginComponent implements OnInit {
   showSpinner: boolean = false;
 
   constructor(private fb: FormBuilder, private service: AuthService, private router: Router,
-    private _snackBar: MatSnackBar, private tokenStorage: TokenStorageService) { }
-
-  ngOnInit(): void {
+    private _snackBar: MatSnackBar, private tokenStorage: TokenStorageService) {
 
     this.navigateByRole();
+
+  }
+
+  ngOnInit(): void {
 
     this.loginFormGroup = this.fb.group({
 
@@ -67,16 +69,16 @@ export class LoginComponent implements OnInit {
   navigateByRole() {
 
     let role = this.tokenStorage.getUser().role;
-
-    if(!role) {
+    console.log('role here ', role);
+    if (role == undefined) {
       return;
     }
 
-    if(role == 1) {
+    if (role == 1) {
 
       this.router.navigateByUrl('admin');
 
-    } else {
+    } else if (role == 0) {
 
       this.router.navigateByUrl('receptionist');
 

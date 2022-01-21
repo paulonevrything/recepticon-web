@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-admin',
@@ -10,7 +9,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 export class AdminComponent implements OnInit {
 
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private _snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
   }
