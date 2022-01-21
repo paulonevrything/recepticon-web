@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.navigateByRole();
+
     this.loginFormGroup = this.fb.group({
 
       username: new FormControl('', Validators.compose([
@@ -31,7 +33,8 @@ export class LoginComponent implements OnInit {
       password: new FormControl('', Validators.compose([
         Validators.required
       ]))
-    })
+    });
+
   }
 
   toggleFieldTextType() {
@@ -64,6 +67,10 @@ export class LoginComponent implements OnInit {
   navigateByRole() {
 
     let role = this.tokenStorage.getUser().role;
+
+    if(!role) {
+      return;
+    }
 
     if(role == 1) {
 
