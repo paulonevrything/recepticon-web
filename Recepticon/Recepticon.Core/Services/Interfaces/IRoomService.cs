@@ -1,4 +1,5 @@
-﻿using Recepticon.Domain.Rooms;
+﻿using Recepticon.Domain.Models;
+using Recepticon.Domain.Rooms;
 using Recepticon.Domain.RoomTypes;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace Recepticon.Core.Services.Interfaces
 {
     public interface IRoomService
     {
-        Task<Room> CreateRoom(Room model);
+        Task<Room> CreateRoom(RoomDTO model);
         Task<IEnumerable<Room>> GetAllRooms();
         Task<IEnumerable<Room>> GetAllVacantRooms();
         Task<Room> GetRoomById(int id);

@@ -1,7 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AutoMapper;
+using Microsoft.Extensions.Logging;
 using Recepticon.Core.Helpers;
 using Recepticon.Core.Services.Interfaces;
 using Recepticon.Domain.Interfaces;
+using Recepticon.Domain.Models;
 using Recepticon.Domain.Rooms;
 using Recepticon.Domain.RoomTypes;
 using Recepticon.Domain.Users;
@@ -18,16 +20,19 @@ namespace Recepticon.Core.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRoomRepository _roomRepository;
         private readonly IRoomTypeRepository _roomTypeRepository;
+        private readonly IMapper _mapper;
         readonly ILogger<RoomService> _logger;
+
         public RoomService(IUnitOfWork unitOfWork, IRoomRepository roomRepository,
-            ILogger<RoomService> logger, IRoomTypeRepository roomTypeRepository)
+            ILogger<RoomService> logger, IMapper mapper, IRoomTypeRepository roomTypeRepository)
         {
             _roomRepository = roomRepository;
             _unitOfWork = unitOfWork;
             _logger = logger;
+            _mapper = mapper;
             _roomTypeRepository = roomTypeRepository;
         }
-        public async Task<Room> CreateRoom(Room model)
+        public async Task<Room> CreateRoom(RoomDTO model)
         {
             try
             {
@@ -36,10 +41,13 @@ namespace Recepticon.Core.Services
                 if (existingRoom != null)
                     throw new CustomException("Room with the room number '" + model.RoomNumber + "' already exists");
 
-                _roomRepository.Add(model);
+                var room = _mapper.Map<Room>(model);
+                room.RoomStatus = RoomStatus.VACANT;
+
+                _roomRepository.Add(room);
                 await _unitOfWork.CommitAsync();
 
-                return model;
+                return room;
 
             }
             catch (Exception ex)

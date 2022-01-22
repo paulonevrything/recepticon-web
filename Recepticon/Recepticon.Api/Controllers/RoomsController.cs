@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Recepticon.Core.Services.Interfaces;
+using Recepticon.Domain.Models;
 using Recepticon.Domain.Rooms;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,6 @@ namespace Recepticon.Api.Controllers
     [ApiController]
     public class RoomsController : ControllerBase
     {
-        //TODO: Match frontend request with api for create room - map them
-        //TODO: Get room by rrom id
         private IRoomService _roomService;
         public RoomsController(IRoomService roomService)
         {
@@ -57,7 +56,7 @@ namespace Recepticon.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAsync([FromBody] Room room)
+        public async Task<IActionResult> CreateAsync([FromBody] RoomDTO room)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
