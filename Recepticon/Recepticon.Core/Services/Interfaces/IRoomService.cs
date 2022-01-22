@@ -11,6 +11,7 @@ namespace Recepticon.Core.Services.Interfaces
     {
         Task<Room> CreateRoom(Room model);
         Task<IEnumerable<Room>> GetAllRooms();
+        Task<IEnumerable<Room>> GetAllVacantRooms();
         Task<Room> GetRoomById(int id);
         Task<Room> UpdateRoom(int id, Room room);
         Task<bool> DeleteRoom(int id);

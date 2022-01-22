@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Recepticon.Core.Services.Interfaces;
 using Recepticon.Domain.Guest;
+using Recepticon.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace Recepticon.Api.Controllers
         {
             _guestService = guestService;
         }
-
+         
 
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
@@ -49,21 +50,21 @@ namespace Recepticon.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAsync([FromBody] Guest room)
+        public async Task<IActionResult> CreateAsync([FromBody] GuestDTO guest)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            return Ok(await _guestService.Create(room));
+            return Ok(await _guestService.Create(guest));
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAsync(int id, [FromBody] Guest room)
+        public async Task<IActionResult> UpdateAsync(int id, [FromBody] Guest guest)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            return Ok(await _guestService.Update(id, room));
+            return Ok(await _guestService.Update(id, guest));
         }
 
     }

@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Guest } from 'src/app/core/interfaces/guest';
 import { GuestService } from 'src/app/core/services/guest.service';
+import { NewBookingComponent } from '../new-booking/new-booking.component';
 
 @Component({
   selector: 'app-guest-list',
@@ -11,15 +15,21 @@ import { GuestService } from 'src/app/core/services/guest.service';
 })
 export class GuestListComponent implements OnInit {
 
-  constructor(private service: GuestService, private _snackBar: MatSnackBar) { }
-
-  ngOnInit(): void {
-  }
-
+  
   displayedColumns: string[] = ['firstName', 'lastName', 'phoneNumber', 'address', 'roomId', 'checkIn', 'checkOut'];
   guestList: Guest[] = [];
+  dataSource!: MatTableDataSource<Guest>;
 
-  dataSource = new MatTableDataSource(this.guestList);
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+  @ViewChild(MatSort) sort: MatSort | undefined;
+
+  constructor(private service: GuestService, private _snackBar: MatSnackBar,
+    public dialog: MatDialog) { }
+
+  ngOnInit(): void {
+    this.getGuests();
+  }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -28,8 +38,9 @@ export class GuestListComponent implements OnInit {
 
   getGuests() {
     this.service.getGuestList().subscribe(data => {
-      console.log(data);
+      console.log('guests: ', data);
       this.guestList = data;
+      this.dataSource = new MatTableDataSource(this.guestList);
     },
       err => {
         console.log(err)
@@ -37,6 +48,14 @@ export class GuestListComponent implements OnInit {
           duration: 3000
         })
       });
+  }
+
+  bookGuest() {
+    let dialogRef = this.dialog.open(NewBookingComponent);
+
+    dialogRef.afterClosed().subscribe(()=> {
+      this.getGuests();
+    })
   }
 
 }

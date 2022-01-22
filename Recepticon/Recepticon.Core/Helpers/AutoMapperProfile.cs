@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Recepticon.Domain.Guest;
 using Recepticon.Domain.Models;
 using Recepticon.Domain.Users;
 using System;
@@ -12,6 +13,7 @@ namespace Recepticon.Core.Helpers
         public AutoMapperProfile()
         {
             CreateMap<UserDTO, User>();
+            CreateMap<GuestDTO, Guest>();
 
         }
     }

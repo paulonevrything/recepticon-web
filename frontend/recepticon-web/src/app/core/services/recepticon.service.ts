@@ -23,10 +23,6 @@ export class RecepticonService {
     return this.http.get<User[]>(this.baseUrl + 'Users');
   }
 
-  getUser() {
-
-  }
-
   deleteUser() {
 
   }

@@ -84,6 +84,22 @@ namespace Recepticon.Core.Services
             }
         }
 
+        public async Task<IEnumerable<Room>> GetAllVacantRooms()
+        {
+            try
+            {
+                var rooms = _roomRepository.List(x => x.RoomStatus == RoomStatus.VACANT).ToList();
+
+                return rooms;
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw;
+            }
+        }
+
         public async Task<Room> GetRoomById(int id)
         {
             try
