@@ -32,6 +32,13 @@ namespace Recepticon.Api.Controllers
             return Ok(await _roomService.GetAllRooms());
         }
 
+        [HttpGet("vacant")]
+        public async Task<IActionResult> GetAllVacantRoomsAsync()
+        {
+
+            return Ok(await _roomService.GetAllVacantRooms());
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetRoomByIdAsync(int id)
         {

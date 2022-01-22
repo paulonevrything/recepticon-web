@@ -26,6 +26,8 @@ export class NewBookingComponent implements OnInit {
 
   reservation: any;
 
+  todaysDate: Date = new Date();
+
   constructor(private fb: FormBuilder, private service: GuestService,
     private _snackBar: MatSnackBar, private roomService: RoomService) { }
 
@@ -34,22 +36,6 @@ export class NewBookingComponent implements OnInit {
     this.getRoomTypes();
     this.getRooms();
     this.buildForms();
-  }
-
-  selectionChange(event: StepperSelectionEvent) {
-
-    let stepLabel = event.selectedStep.label;
-
-    if (stepLabel == "booking-form") {
-
-      this.buildGuest(this.newGuestFormGroup.value);
-
-    } else if (stepLabel == "submit-form") {
-
-      this.buildBooking(this.bookingInformationFormGroup.value);
-
-    }
-
   }
 
   buildForms() {
@@ -94,17 +80,7 @@ export class NewBookingComponent implements OnInit {
 
   }
 
-  buildGuest(guestFormDetails: any) {
-
-    console.log(guestFormDetails);
-  }
-
-  buildBooking(bookingFormDetails: any) {
-
-    console.log(bookingFormDetails);
-  }
-
-  submitBooking() {
+  buildGuest() {
 
     let guest: Guest = {
       id: 0,
@@ -112,10 +88,19 @@ export class NewBookingComponent implements OnInit {
       lastName: this.newGuestFormGroup.controls.lastName.value,
       phoneNumber: this.newGuestFormGroup.controls.phoneNumber.value,
       address: this.newGuestFormGroup.controls.address.value,
-      roomId: this.bookingInformationFormGroup.controls.roomType.value,
+      roomId: Number(this.bookingInformationFormGroup.controls.roomNumber.value),
       checkIn: this.bookingInformationFormGroup.controls.checkInDate.value,
       checkOut: this.bookingInformationFormGroup.controls.checkOutDate.value,
     }
+
+    return guest;
+  }
+
+  submitBooking() {
+
+    this.showSpinner = true;
+
+    let guest = this.buildGuest();
 
     this.service.bookNewGuest(guest).subscribe(result => {
 
@@ -123,6 +108,8 @@ export class NewBookingComponent implements OnInit {
 
       this.bookingInformationFormGroup.reset();
       this.newGuestFormGroup.reset();
+
+      this.getRooms();
 
       console.log(result)
       this._snackBar.open(`Successfully added ${guest.firstName}`, 'Ok', {
@@ -149,8 +136,9 @@ export class NewBookingComponent implements OnInit {
   }
 
   getRooms() {
-    this.roomService.getAllRooms().subscribe(data => {
-      this.roomsResult = data.filter(x =>  x.roomStatus == 0);
+    this.roomService.getAllVacantRooms().subscribe(data => {
+      console.log('vacant ', data)
+      this.roomsResult = data.filter(x => x.roomStatus == 0);
     },
       err => {
 

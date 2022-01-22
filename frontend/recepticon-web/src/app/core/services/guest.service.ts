@@ -15,7 +15,7 @@ export class GuestService {
 
     // Guests
     getGuestList(): Observable<Guest[]> {
-      return this.http.get<Guest[]>(this.baseUrl + 'Rooms');
+      return this.http.get<Guest[]>(this.baseUrl + 'Guests');
     }
   
     bookNewGuest(guest: Guest): Observable<any> {

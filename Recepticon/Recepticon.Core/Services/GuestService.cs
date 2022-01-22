@@ -1,7 +1,11 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AutoMapper;
+using Microsoft.Extensions.Logging;
+using Recepticon.Core.Helpers;
 using Recepticon.Core.Services.Interfaces;
 using Recepticon.Domain.Guest;
 using Recepticon.Domain.Interfaces;
+using Recepticon.Domain.Models;
+using Recepticon.Domain.Rooms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,27 +19,48 @@ namespace Recepticon.Core.Services
         private IGuestRepository _guestRepository;
         private readonly IUnitOfWork _unitOfWork;
         readonly ILogger<GuestService> _logger;
-        public GuestService(IGuestRepository guestRepository, IUnitOfWork unitOfWork, ILogger<GuestService> logger)
+        private readonly IMapper _mapper;
+        private IRoomRepository _roomRepository;
+        
+        public GuestService(IGuestRepository guestRepository, IUnitOfWork unitOfWork,
+            ILogger<GuestService> logger, IMapper mapper, IRoomRepository roomRepository)
         {
             _guestRepository = guestRepository;
             _unitOfWork = unitOfWork;
             _logger = logger;
+            _mapper = mapper;
+            _roomRepository = roomRepository;
         }
-        public async Task<Guest> Create(Guest model)
+
+        public async Task<Guest> Create(GuestDTO model)
         {
             try
             {
-                /* TODO: Clean out guest creation
-                     check that room is available
-                     check that checkout date is after checkin date and is not same day
-                     create guest
-                     update room status and checkout date
-                */
 
-                _guestRepository.Add(model);
+                if(model.CheckOut.Date <= model.CheckIn.Date)
+                {
+                    throw new CustomException("Checkout date cannot be before Checkin date");
+                }
+
+                var room = _roomRepository.Find(model.RoomId);
+
+                if(room == null || room.RoomStatus != RoomStatus.VACANT)
+                {
+                    throw new CustomException("Room '" + model.RoomId + "' is not available at the moment");
+
+                } else
+                {
+                    room.RoomStatus = RoomStatus.OCCUPIED;
+                    room.CheckOut = model.CheckOut;
+                    _roomRepository.Update(room);
+                }
+
+                var guest = _mapper.Map<Guest>(model);
+
+                _guestRepository.Add(guest);
                 await _unitOfWork.CommitAsync();
 
-                return model;
+                return guest;
 
             }
             catch (Exception ex)

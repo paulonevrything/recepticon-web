@@ -2,72 +2,72 @@
 
 <div class="grid-container">
 
-  <h1 class="mat-h1"> Admin Dashboard</h1>
+    <h1 class="mat-h1"> Admin Dashboard</h1>
 
-  <mat-grid-list cols="2" rowHeight="350px">
-    <!-- <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)"> -->
+    <mat-grid-list cols="2" rowHeight="350px">
+        <!-- <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)"> -->
 
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
 
-      <mat-card class="dashboard-card rooms">
+            <mat-card class="dashboard-card rooms">
 
-        <mat-card-header>
-          <mat-card-title>
-            Rooms
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
+                <mat-card-header>
+                    <mat-card-title>
+                        Rooms
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="dashboard-card-content">
 
-          <app-room-list></app-room-list>
-          
-        </mat-card-content>
+                    <app-room-list></app-room-list>
 
-      </mat-card>
+                </mat-card-content>
 
-    </mat-grid-tile>
+            </mat-card>
 
-    <mat-grid-tile>
+        </mat-grid-tile>
 
-      <mat-card class="dashboard-card">
+        <mat-grid-tile>
 
-        <mat-card-header>
-          <mat-card-title>
-            Users
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
+            <mat-card class="dashboard-card">
 
-          <app-user-list></app-user-list>
+                <mat-card-header>
+                    <mat-card-title>
+                        Users
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="dashboard-card-content">
 
-        </mat-card-content>
+                    <app-user-list></app-user-list>
 
-      </mat-card>
+                </mat-card-content>
 
-    </mat-grid-tile>
+            </mat-card>
 
-    <mat-grid-tile [colspan]="2" [rowspan]="2">
+        </mat-grid-tile>
 
-      <mat-card class="dashboard-card">
+        <mat-grid-tile [colspan]="2" [rowspan]="2">
 
-        <mat-card-header>
-          <mat-card-title>
-            Guest List
-          </mat-card-title>
-        </mat-card-header>
+            <mat-card class="dashboard-card">
 
-        <mat-card-content class="dashboard-card-content">
+                <mat-card-header>
+                    <mat-card-title>
+                        Guest List
+                    </mat-card-title>
+                </mat-card-header>
 
-          <div class="table-container">
-            <app-guest-list></app-guest-list>
+                <mat-card-content class="dashboard-card-content">
 
-          </div>
-          
-        </mat-card-content>
+                    <div class="table-container">
+                        <app-guest-list></app-guest-list>
 
-      </mat-card>
+                    </div>
 
-    </mat-grid-tile>
+                </mat-card-content>
 
-  </mat-grid-list>
+            </mat-card>
+
+        </mat-grid-tile>
+
+    </mat-grid-list>
 
 </div>

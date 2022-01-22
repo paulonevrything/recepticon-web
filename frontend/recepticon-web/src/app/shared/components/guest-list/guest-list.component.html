@@ -1,9 +1,15 @@
+<div class="button-container">
+    <button mat-raised-button (click)="bookGuest()" class="demo-button">
+        Book New Guest
+    </button>
+</div>
+
 <mat-form-field appearance="standard">
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Input guest name" #input>
 </mat-form-field>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
 
     <!-- First Name Column -->
     <ng-container matColumnDef="firstName">
@@ -55,3 +61,4 @@
         <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
     </tr>
 </table>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

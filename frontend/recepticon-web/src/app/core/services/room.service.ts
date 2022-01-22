@@ -19,6 +19,10 @@ export class RoomService {
       return this.http.get<Room[]>(this.baseUrl + 'Rooms');
     }
 
+    getAllVacantRooms(): Observable<Room[]> {
+      return this.http.get<Room[]>(this.baseUrl + 'Rooms/vacant');
+    }
+
     getOneRoom(id: number): Observable<Room> {
       return this.http.get<Room>(this.baseUrl + `Rooms/${id}`);
     }

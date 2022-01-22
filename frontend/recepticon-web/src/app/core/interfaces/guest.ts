@@ -4,7 +4,7 @@ export interface Guest {
     lastName: string;
     phoneNumber: string;
     address: string;
-    roomId: string;
+    roomId: number;
     checkIn: Date;
     checkOut: Date;
 }
