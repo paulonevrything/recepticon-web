@@ -18,8 +18,8 @@ export class GuestService {
       return this.http.get<Guest[]>(this.baseUrl + 'Rooms');
     }
   
-    bookNewGuest() {
-  
+    bookNewGuest(guest: Guest): Observable<any> {
+      return this.http.post(this.baseUrl + 'Guests', guest);
     }
   
     checkOutGuest() {
