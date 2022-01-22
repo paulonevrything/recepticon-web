@@ -17,7 +17,6 @@ namespace Recepticon.Api.Controllers
     [ApiController]
     public class GuestsController : ControllerBase
     {
-        // TODO: Create DTO for guest
         private IGuestService _guestService;
         public GuestsController(IGuestService guestService)
         {

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Recepticon.Domain.Guest;
 using Recepticon.Domain.Models;
+using Recepticon.Domain.Rooms;
 using Recepticon.Domain.Users;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Recepticon.Core.Helpers
         {
             CreateMap<UserDTO, User>();
             CreateMap<GuestDTO, Guest>();
-
+            CreateMap<RoomDTO, Room>();
         }
     }
 }

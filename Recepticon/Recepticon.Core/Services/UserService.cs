@@ -121,7 +121,6 @@ namespace Recepticon.Core.Services
         {
             try
             {
-                // TODO: exclude current user from list
                 var userList = _userRepository.GetAll().ToList();
 
                 return userList;

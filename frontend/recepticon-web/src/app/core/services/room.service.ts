@@ -44,8 +44,8 @@ export class RoomService {
   
     createRoom(roomName: string, roomTypeId: number): Observable<any> {
       return this.http.post(this.baseUrl + 'Rooms', {
-        roomName: roomName,
-        roomTypeId: roomTypeId
+        roomNumber: roomName,
+        roomTypeId: Number(roomTypeId)
       });
     }
   
