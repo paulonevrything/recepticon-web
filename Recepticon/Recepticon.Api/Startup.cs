@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Hangfire;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -41,6 +42,10 @@ namespace Recepticon.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddHangfire(x => x.UseSqlServerStorage(Configuration.GetConnectionString("RecepticonConnection")));
+            services.AddHangfireServer();
+
             services.AddControllers();
 
             services.AddSwaggerGen(options =>
@@ -133,7 +138,6 @@ namespace Recepticon.Api
             services.AddScoped<IGuestRepository, GuestRepository>();
             services.AddScoped<DbFactory>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            //services.AddScoped<BasicAuthenticationHandler>();
             services.AddScoped<Func<RecepticonDbContext>>((provider) => () => provider.GetService<RecepticonDbContext>());
 
         }
@@ -142,6 +146,9 @@ namespace Recepticon.Api
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCors("CorsPolicy");
+            app.UseHangfireDashboard();
+
+            RecurringJob.AddOrUpdate<ICheckOutService>(x => x.CheckOut(), Cron.Daily(10));
 
             if (env.IsDevelopment())
             {
