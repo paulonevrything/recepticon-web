@@ -21,7 +21,6 @@ namespace Recepticon.Core.Services
 {
     public class UserService : IUserService
     {
-        // TODO: Add cache to get endpoints
         private readonly IUnitOfWork _unitOfWork;
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;

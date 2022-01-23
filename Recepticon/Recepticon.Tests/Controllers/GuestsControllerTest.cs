@@ -27,7 +27,6 @@ namespace Recepticon.Tests.Controllers
         }
 
 
-
         [Fact]
         public async Task GetAllAsync_ReturnsAllGuests()
         {

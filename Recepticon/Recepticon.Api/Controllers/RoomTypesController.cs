@@ -22,7 +22,7 @@ namespace Recepticon.Api.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> GetAllRoomsAsync()
+        public async Task<IActionResult> GetAllRoomTypesAsync()
         {
 
             return Ok(await _roomService.GetAllRoomTypes());
