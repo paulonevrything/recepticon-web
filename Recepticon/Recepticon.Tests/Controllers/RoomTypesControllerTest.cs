@@ -45,8 +45,8 @@ namespace Recepticon.Tests.Controllers
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result);
             var returnValue = Assert.IsType<List<RoomType>>(okResult.Value);
-            var guest = returnValue.FirstOrDefault();
-            Assert.Equal(testResponseValue.FirstOrDefault(), guest);
+            var roomType = returnValue.FirstOrDefault();
+            Assert.Equal(testResponseValue.FirstOrDefault(), roomType);
         }
 
         [Fact]
