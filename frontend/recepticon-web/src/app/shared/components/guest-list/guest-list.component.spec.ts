@@ -1,4 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { GuestListComponent } from './guest-list.component';
 
@@ -8,7 +11,8 @@ describe('GuestListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GuestListComponent ]
+      declarations: [ GuestListComponent ],
+      imports: [ HttpClientTestingModule, MatDialogModule, MatSnackBarModule ]
     })
     .compileComponents();
   });

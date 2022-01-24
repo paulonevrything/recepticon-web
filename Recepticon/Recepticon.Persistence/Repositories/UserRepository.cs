@@ -12,12 +12,5 @@ namespace Recepticon.Persistence.Repositories
         public UserRepository(DbFactory dbFactory) : base(dbFactory)
         {
         }
-
-        public User NewUser(UserDTO userDTO)
-        {
-            var user = new User();
-            this.Add(user);
-            return user;
-        }
     }
 }
