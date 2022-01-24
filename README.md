@@ -1,7 +1,7 @@
 # Recepticon Web
 Recepticon web is a full-stack adaptation of a Hotel Front Desk Application I built on C# WinForm. It conist of a Receptionist Page where new guests can registered and an Admin Page where users, rooms and guests are managed.
 
-Image here
+![Recepticon Landing Page](https://github.com/paulonevrything/recepticon-web/blob/main/landing.png)
 
 ## Task
 A solution containing a WebAPI, Docker and a frontend based on a Typescript based Single Page Application Framework
