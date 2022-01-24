@@ -10,14 +10,14 @@ A solution containing a WebAPI, Docker and a frontend based on a Typescript base
 
 -   [Features](https://github.com/paulonevrything/recepticon-web#features)
 	- [Authentication](https://github.com/paulonevrything/recepticon-web#authentication)
-	- [Receptionist Users](https://github.com/paulonevrything/recepticon-web#receptionist)
-	- [Admin Users](https://github.com/paulonevrything/recepticon-web#admin)
--   [Scope of my solution](https://github.com/paulonevrything/recepticon-web#scope)
-	- [Backend](https://github.com/paulonevrything/recepticon-web#scope-backend)
-	- [User Interface](https://github.com/paulonevrything/recepticon-web#scope-ui)
+	- [Receptionist Users](https://github.com/paulonevrything/recepticon-web#receptionist-users)
+	- [Admin Users](https://github.com/paulonevrything/recepticon-web#admin-users)
+-   [Scope of my solution](https://github.com/paulonevrything/recepticon-web#scope-of-my-solution)
+	- [Backend](https://github.com/paulonevrything/recepticon-web#backend)
+	- [User Interface](https://github.com/paulonevrything/recepticon-web#user-interface)
 -   [Limitations](https://github.com/paulonevrything/recepticon-web#limitations)
--   [Likely Improvements](https://github.com/paulonevrything/recepticon-web#improvements)
--   [Installation Information](https://github.com/paulonevrything/recepticon-web#installation)
+-   [Likely Improvements](https://github.com/paulonevrything/recepticon-web#likely-improvements)
+-   [Installation Information](https://github.com/paulonevrything/recepticon-web#installation-information)
 
 ## [](https://github.com/paulonevrything/recepticon-web#features)Features
 
