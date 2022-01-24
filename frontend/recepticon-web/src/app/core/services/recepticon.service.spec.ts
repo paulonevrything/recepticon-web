@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
 import { RecepticonService } from './recepticon.service';
@@ -6,7 +7,8 @@ describe('RecepticonService', () => {
   let service: RecepticonService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],});
     service = TestBed.inject(RecepticonService);
   });
 

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './core/gaurds/auth.guard';
 import { RouterGuard } from './core/gaurds/router.guard';
 import { Role } from './core/interfaces/role';
 

@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 
 import { AdminComponent } from './admin.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -24,6 +25,7 @@ describe('AdminComponent', () => {
         MatGridListModule,
         MatIconModule,
         MatMenuModule,
+        MatSnackBarModule
       ]
     }).compileComponents();
   }));
