@@ -121,7 +121,11 @@ namespace Recepticon.Api
 
             services.AddDbContext<RecepticonDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("RecepticonConnection"));
+                options.UseSqlServer(Configuration.GetConnectionString("RecepticonConnection"), builder =>
+                {
+                    builder.MigrationsAssembly(typeof(RecepticonDbContext).Assembly.FullName);
+                    builder.EnableRetryOnFailure();
+                });
             });
 
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
@@ -153,9 +157,9 @@ namespace Recepticon.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI();
             }
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
             app.UseHttpsRedirection();
 

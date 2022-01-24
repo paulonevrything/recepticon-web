@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  backend:
+    image: recepticon-api
+    ports:
+            - "8000:80"
+    build:
+      context: ./backend/
+      dockerfile: Dockerfile
+    depends_on:
+            - db
+  db:
+      image: "mcr.microsoft.com/mssql/server"
+      environment:
+          MSSQL_SA_PASSWORD: "Qwertyuiop123"
+          ACCEPT_EULA: "Y"
+  frontend:
+        image: recepticon-ui
+        build: 
+            context: ./frontend/
+            dockerfile: Dockerfile
+        ports: 
+          - "5006:80"
+        depends_on: 
+          - backend

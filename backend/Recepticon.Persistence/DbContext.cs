@@ -5,6 +5,7 @@ using Recepticon.Domain.Models;
 using Recepticon.Domain.Rooms;
 using Recepticon.Domain.RoomTypes;
 using Recepticon.Domain.Users;
+using BCryptNet = BCrypt.Net.BCrypt;
 
 namespace Recepticon.Persistence
 {
@@ -26,8 +27,8 @@ namespace Recepticon.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData
-                (new User { Id = 1, FirstName = "Jane", LastName = "Doe", Password = "$2a$11$vyALW618YzUFan7evygCX.4Mv.uDscVTbKJpx4aKvjsMJQuZI8QJm", Role = Role.ADMIN, IsDeleted = false, Username = "string" },
-                new User { Id = 2, FirstName = "John", LastName = "Doe", Password = "$2a$11$vyALW618YzUFan7evygCX.4Mv.uDscVTbKJpx4aKvjsMJQuZI8QJm", Role = Role.RECEPTIONIST, IsDeleted = false, Username = "stringJohn" });
+                (new User { Id = 1, FirstName = "Jane", LastName = "Doe", Password = BCryptNet.HashPassword("P1ssw@rd", "Recepticon_Salt"), Role = Role.ADMIN, IsDeleted = false, Username = "string" },
+                new User { Id = 2, FirstName = "John", LastName = "Doe", Password = BCryptNet.HashPassword("P155w@rd", "Recepticon_Salt"), Role = Role.RECEPTIONIST, IsDeleted = false, Username = "stringJohn" });
 
             modelBuilder.Entity<Room>().HasData
                 (new Room { Id = 1, RoomNumber = "200", RoomTypeId = 1, RoomStatus = RoomStatus.VACANT },
