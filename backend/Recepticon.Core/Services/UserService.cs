@@ -41,11 +41,10 @@ namespace Recepticon.Core.Services
         {
             try
             {
-                var passwordHash = BCryptNet.HashPassword(password, _appSettings.Salt);
 
                 var existingUser = _userRepository.List(x => x.Username == username).FirstOrDefault();
 
-                if(existingUser != null && BCryptNet.Verify(passwordHash, existingUser.Password))
+                if(existingUser != null && BCryptNet.Verify(password, existingUser.Password))
                 {
 
                     var token = generateJwtToken(existingUser);
@@ -84,7 +83,7 @@ namespace Recepticon.Core.Services
 
                 var user =_mapper.Map<User>(model);
 
-                user.Password = BCryptNet.HashPassword(model.Password, _appSettings.Salt);
+                user.Password = BCryptNet.HashPassword(model.Password);
 
                 _userRepository.Add(user);
                 await _unitOfWork.CommitAsync();

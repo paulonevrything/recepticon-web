@@ -27,8 +27,8 @@ namespace Recepticon.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData
-                (new User { Id = 1, FirstName = "Jane", LastName = "Doe", Password = BCryptNet.HashPassword("P1ssw@rd", "Recepticon_Salt"), Role = Role.ADMIN, IsDeleted = false, Username = "string" },
-                new User { Id = 2, FirstName = "John", LastName = "Doe", Password = BCryptNet.HashPassword("P155w@rd", "Recepticon_Salt"), Role = Role.RECEPTIONIST, IsDeleted = false, Username = "stringJohn" });
+                (new User { Id = 1, FirstName = "Jane", LastName = "Doe", Password = BCryptNet.HashPassword("P1ssw@rd"), Role = Role.ADMIN, IsDeleted = false, Username = "jane-doe" },
+                new User { Id = 2, FirstName = "John", LastName = "Doe", Password = BCryptNet.HashPassword("P155w@rd"), Role = Role.RECEPTIONIST, IsDeleted = false, Username = "john-doe" });
 
             modelBuilder.Entity<Room>().HasData
                 (new Room { Id = 1, RoomNumber = "200", RoomTypeId = 1, RoomStatus = RoomStatus.VACANT },
