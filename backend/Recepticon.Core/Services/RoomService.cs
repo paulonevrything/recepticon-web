@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Logging;
+using Recepticon.Core.Constants;
+using Recepticon.Core.Exceptions;
 using Recepticon.Core.Helpers;
 using Recepticon.Core.Services.Interfaces;
 using Recepticon.Domain.Interfaces;
@@ -39,7 +41,7 @@ namespace Recepticon.Core.Services
                 var existingRoom = _roomRepository.List(x => x.RoomNumber == model.RoomNumber).FirstOrDefault();
 
                 if (existingRoom != null)
-                    throw new CustomException("Room with the room number '" + model.RoomNumber + "' already exists");
+                    throw new AlreadyExistException("Room with the room number '" + model.RoomNumber + "' already exists");
 
                 var room = _mapper.Map<Room>(model);
                 room.RoomStatus = RoomStatus.VACANT;
@@ -52,8 +54,7 @@ namespace Recepticon.Core.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                throw;
+                throw ThrowException(ex);
             }
         }
 
@@ -71,8 +72,7 @@ namespace Recepticon.Core.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                throw;
+                throw ThrowException(ex);
             }
         }
 
@@ -87,8 +87,7 @@ namespace Recepticon.Core.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                throw;
+                throw ThrowException(ex);
             }
         }
 
@@ -103,8 +102,7 @@ namespace Recepticon.Core.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                throw;
+                throw ThrowException(ex);
             }
         }
 
@@ -116,8 +114,7 @@ namespace Recepticon.Core.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                throw;
+                throw ThrowException(ex);
             }
         }
 
@@ -127,26 +124,19 @@ namespace Recepticon.Core.Services
             {
                 var existingRoom = GetRoom(id);
 
-                if (existingRoom != null)
-                {
-                    existingRoom.RoomStatus = room.RoomStatus;
-                    existingRoom.RoomTypeId = room.RoomTypeId;
-                    existingRoom.RoomNumber = room.RoomNumber;
+                existingRoom.RoomStatus = room.RoomStatus;
+                existingRoom.RoomTypeId = room.RoomTypeId;
+                existingRoom.RoomNumber = room.RoomNumber;
 
-                    _roomRepository.Update(existingRoom);
-                    await _unitOfWork.CommitAsync();
+                _roomRepository.Update(existingRoom);
+                await _unitOfWork.CommitAsync();
 
-                    return existingRoom;
-
-                }
-
-                return null;
+                return existingRoom;
 
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                throw;
+                throw ThrowException(ex);
             }
         }
 
@@ -158,7 +148,7 @@ namespace Recepticon.Core.Services
                 var existingRoomType = _roomTypeRepository.List(x => x.RoomTypeName == model.RoomTypeName).FirstOrDefault();
 
                 if (existingRoomType != null)
-                    throw new CustomException("Room type with the name '" + model.RoomTypeName + "' already exists");
+                    throw new AlreadyExistException("Room type with the name '" + model.RoomTypeName + "' already exists");
 
                 _roomTypeRepository.Add(model);
                 await _unitOfWork.CommitAsync();
@@ -168,8 +158,7 @@ namespace Recepticon.Core.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                throw;
+                throw ThrowException(ex);
             }
         }
 
@@ -187,8 +176,7 @@ namespace Recepticon.Core.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                throw;
+                throw ThrowException(ex);
             }
         }
 
@@ -203,8 +191,7 @@ namespace Recepticon.Core.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                throw;
+                throw ThrowException(ex);
             }
         }
 
@@ -216,8 +203,7 @@ namespace Recepticon.Core.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                throw;
+                throw ThrowException(ex);
             }
         }
 
@@ -227,40 +213,45 @@ namespace Recepticon.Core.Services
             {
                 var existingRoomType = GetRoomType(id);
 
-                if (existingRoomType != null)
-                {
-                    existingRoomType.Price = roomType.Price;
-                    existingRoomType.RoomTypeName = roomType.RoomTypeName;
+                existingRoomType.Price = roomType.Price;
+                existingRoomType.RoomTypeName = roomType.RoomTypeName;
 
-                    _roomTypeRepository.Update(existingRoomType);
-                    await _unitOfWork.CommitAsync();
+                _roomTypeRepository.Update(existingRoomType);
+                await _unitOfWork.CommitAsync();
 
-                    return existingRoomType;
-
-                }
-
-                return null;
+                return existingRoomType;
 
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                throw;
+                throw ThrowException(ex);
             }
         }
 
         private Room GetRoom(int id)
         {
             var room = _roomRepository.Find(id);
-            if (room == null) throw new KeyNotFoundException("Room not found");
+            if (room == null) throw new KeyNotFoundException(ErrorConstants.ROOM_NOT_FOUND);
             return room;
         }
 
         private RoomType GetRoomType(int id)
         {
             var roomType = _roomTypeRepository.Find(id);
-            if (roomType == null) throw new KeyNotFoundException("Room type not found");
+            if (roomType == null) throw new KeyNotFoundException(ErrorConstants.ROOM_TYPE_NOT_FOUND);
             return roomType;
+        }
+
+        private Exception ThrowException(Exception ex)
+        {
+            _logger.LogError(ex.Message);
+
+            if (ex.InnerException is KeyNotFoundException)
+            {
+                return ex;
+            }
+
+            return new CustomException(ErrorConstants.UNKNOWN_ERROR);
         }
     }
 }

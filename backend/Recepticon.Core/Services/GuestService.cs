@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Logging;
+using Recepticon.Core.Constants;
+using Recepticon.Core.Exceptions;
 using Recepticon.Core.Helpers;
 using Recepticon.Core.Services.Interfaces;
 using Recepticon.Domain.Guest;
@@ -39,14 +41,14 @@ namespace Recepticon.Core.Services
 
                 if(model.CheckOut.Date <= model.CheckIn.Date)
                 {
-                    throw new CustomException("Checkout date cannot be before Checkin date");
+                    throw new InvalidCheckInAndCheckOutException(ErrorConstants.INVALID_CHECKIN_AND_CHECKOUT);
                 }
 
                 var room = _roomRepository.Find(model.RoomId);
 
                 if(room == null || room.RoomStatus != RoomStatus.VACANT)
                 {
-                    throw new CustomException("Room '" + model.RoomId + "' is not available at the moment");
+                    throw new OccupiedRoomException($"Room { model.RoomId } is not available at the moment");
 
                 } else
                 {
@@ -65,8 +67,7 @@ namespace Recepticon.Core.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                throw;
+                throw ThrowUnknownError(ex);
             }
         }
 
@@ -80,8 +81,7 @@ namespace Recepticon.Core.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                throw;
+                throw ThrowUnknownError(ex);
             }
         }
 
@@ -96,37 +96,42 @@ namespace Recepticon.Core.Services
             {
                 var existingGuest = GetGuest(id);
 
-                if (existingGuest != null)
-                {
-                    existingGuest.FirstName = model.FirstName;
-                    existingGuest.LastName = model.LastName;
-                    existingGuest.PhoneNumber = model.PhoneNumber;
-                    existingGuest.Address = model.Address;
-                    existingGuest.CheckIn = model.CheckIn;
-                    existingGuest.CheckOut = model.CheckOut;
+                existingGuest.FirstName = model.FirstName;
+                existingGuest.LastName = model.LastName;
+                existingGuest.PhoneNumber = model.PhoneNumber;
+                existingGuest.Address = model.Address;
+                existingGuest.CheckIn = model.CheckIn;
+                existingGuest.CheckOut = model.CheckOut;
 
-                    _guestRepository.Update(existingGuest);
-                    await _unitOfWork.CommitAsync();
+                _guestRepository.Update(existingGuest);
+                await _unitOfWork.CommitAsync();
 
-                    return existingGuest;
-
-                }
-
-                return null;
+                return existingGuest;
 
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                throw;
+                throw ThrowUnknownError(ex);
             }
         }
 
         private Guest GetGuest(int id)
         {
             var guest = _guestRepository.Find(id);
-            if (guest == null) throw new KeyNotFoundException("Guest not found");
+            if (guest == null) throw new KeyNotFoundException(ErrorConstants.GUEST_NOT_FOUND);
             return guest;
+        }
+
+        private Exception ThrowUnknownError(Exception ex)
+        {
+            _logger.LogError(ex.Message);
+
+            if (ex.InnerException is KeyNotFoundException)
+            {
+                return ex;
+            }
+
+            return new CustomException(ErrorConstants.UNKNOWN_ERROR);
         }
     }
 }
