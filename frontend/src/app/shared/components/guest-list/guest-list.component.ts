@@ -44,9 +44,6 @@ export class GuestListComponent implements OnInit {
     },
       err => {
         console.log(err)
-        this._snackBar.open(err.error.message, 'Ok', {
-          duration: 3000
-        })
       });
   }
 
