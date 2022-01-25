@@ -1,7 +1,7 @@
 
 # Recepticon Web
 
-Recepticon web is a full-stack adaptation of a Hotel Front Desk Application I built on C# WinForm. It conist of a Receptionist Page where new guests can registered and an Admin Page where users, rooms and guests are managed.
+Recepticon web is a full-stack adaptation of a Hotel Front Desk Application I built on C# WinForm. It consists of a Receptionist Page where new guests can registered and an Admin Page where users, rooms and guests are managed.
 
 [![Recepticon Landing Page](https://github.com/paulonevrything/recepticon-web/raw/main/landing.png)](https://github.com/paulonevrything/recepticon-web/blob/main/landing.png)
 
@@ -52,10 +52,11 @@ Recepticon Web consists of the following features:
 #### [](https://github.com/paulonevrything/recepticon-web#backend)[](https://github.com/paulonevrything/recepticon-web#scope-backend)Backend
 
 -   N-Tiered archticature for project structure
--   Entity framework for
--   service interface and implementation class that handles the logic
+-   Entity framework for ORM
+-   Unit of Work and Repository Pattern
+-   Service interface and implementation class that handles the logic
 -   Unit tests on the API controllers
--   API documentation using Swagger UI
+-   Open API documentation using Swagger UI
 -   Hangfire Background Task that automatically returns the status of a previously booked room to vacant on the due date
 -   MSSQL for the Database.
 
@@ -70,8 +71,7 @@ Recepticon Web consists of the following features:
 The limitations with this current version of Recepticon includes:
 
 -   The Receptionist cannot view the list of guests
--   The Admin cannot book new guests
--   The admin cannot manually checkout the guest
+-   The Admin cannot manually checkout the guest
 
 ## [](https://github.com/paulonevrything/recepticon-web#likely-improvements)[](https://github.com/paulonevrything/recepticon-web#improvements)Likely Improvements
 
@@ -83,6 +83,11 @@ Along with handling of the aforementioned limitations, the following improvement
 -   More batch processing abilities using background tasks and queues
 
 ## [](https://github.com/paulonevrything/recepticon-web#installation-information)[](https://github.com/paulonevrything/recepticon-web#installation)Installation information
+
+Clone the project
+```
+git clone https://github.com/paulonevrything/recepticon-web
+```
 
 From the project root, run the following:
 ```
