@@ -16,6 +16,8 @@ using Microsoft.Extensions.Options;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
+using Recepticon.Core.Constants;
+using Recepticon.Core.Exceptions;
 
 namespace Recepticon.Core.Services
 {
@@ -66,8 +68,7 @@ namespace Recepticon.Core.Services
 
             } catch(Exception ex)
             {
-                _logger.LogError(ex.Message);
-                throw;
+                throw ThrowUnknownError(ex);
             }
 
         }
@@ -79,7 +80,7 @@ namespace Recepticon.Core.Services
                 var existingUser = _userRepository.List(x => x.Username == model.Username).FirstOrDefault();
 
                 if (existingUser != null)
-                    throw new CustomException("User with the username '" + model.Username + "' already exists");
+                    throw new AlreadyExistException("User with the username '" + model.Username + "' already exists");
 
                 var user =_mapper.Map<User>(model);
 
@@ -93,8 +94,7 @@ namespace Recepticon.Core.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                throw;
+                throw ThrowUnknownError(ex);
             }
         }
 
@@ -111,8 +111,7 @@ namespace Recepticon.Core.Services
 
             } catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                throw;
+                throw ThrowUnknownError(ex);
             }
         }
 
@@ -127,8 +126,7 @@ namespace Recepticon.Core.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                throw;
+                throw ThrowUnknownError(ex);
             }
         }
 
@@ -140,8 +138,7 @@ namespace Recepticon.Core.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                return null;
+                throw ThrowUnknownError(ex);
             }
         }
 
@@ -151,35 +148,33 @@ namespace Recepticon.Core.Services
             {
                 var existingUser = GetUser(id);
 
-                if (existingUser != null)
-                {
-                    existingUser.FirstName = user.FirstName;
-                    existingUser.LastName = user.LastName;
-                    existingUser.Password = user.Password;
-                    existingUser.Username = user.Username;
-                    existingUser.Role = user.Role;
+                existingUser.FirstName = user.FirstName;
+                existingUser.LastName = user.LastName;
+                existingUser.Password = user.Password;
+                existingUser.Username = user.Username;
+                existingUser.Role = user.Role;
 
-                    _userRepository.Update(existingUser);
-                    await _unitOfWork.CommitAsync();
+                _userRepository.Update(existingUser);
+                await _unitOfWork.CommitAsync();
 
-                    return existingUser;
-
-                }
-
-                return null;
+                return existingUser;
 
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                throw;
+                throw ThrowUnknownError(ex);
             }
         }
 
         private User GetUser(int id)
         {
             var user = _userRepository.Find(id);
-            if (user == null) throw new KeyNotFoundException("User not found");
+
+            if (user == null)
+            {
+                throw new KeyNotFoundException("User not found");
+            }
+
             return user;
         }
 
@@ -195,6 +190,18 @@ namespace Recepticon.Core.Services
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
+        }
+
+        private Exception ThrowUnknownError(Exception ex)
+        {
+            _logger.LogError(ex.Message);
+
+            if (ex.InnerException is KeyNotFoundException)
+            {
+                return ex;
+            }
+
+            return new CustomException(ErrorConstants.UNKNOWN_ERROR);
         }
     }
 }

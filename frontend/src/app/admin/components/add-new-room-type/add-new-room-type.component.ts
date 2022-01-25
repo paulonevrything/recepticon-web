@@ -48,10 +48,6 @@ export class AddNewRoomTypeComponent implements OnInit {
     },
       err => {
         this.showSpinner = false;
-        console.log(err)
-        this._snackBar.open(err.message, 'Ok', {
-          duration: 3000
-        })
       });
   }
 

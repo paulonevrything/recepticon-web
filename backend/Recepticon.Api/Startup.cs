@@ -166,7 +166,9 @@ namespace Recepticon.Api
             app.UseRouting();
 
             app.UseAuthentication();
-            
+
+            app.UseMiddleware(typeof(ExceptionHandlingMiddleware));
+
             app.UseAuthorization();
 
             app.UseMiddleware<JwtMiddleware>();

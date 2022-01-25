@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { TokenStorageService } from 'src/app/core/services/token-storage.service';
@@ -18,7 +17,7 @@ export class LoginComponent implements OnInit {
   showSpinner: boolean = false;
 
   constructor(private fb: FormBuilder, private service: AuthService, private router: Router,
-    private _snackBar: MatSnackBar, private tokenStorage: TokenStorageService) {
+    private tokenStorage: TokenStorageService) {
 
     this.navigateByRole();
 
@@ -59,10 +58,6 @@ export class LoginComponent implements OnInit {
     },
       err => {
         this.showSpinner = false;
-        console.log(err)
-        this._snackBar.open(err.error.message, 'Ok', {
-          duration: 3000
-        })
       });
   }
 
