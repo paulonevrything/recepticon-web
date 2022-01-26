@@ -95,4 +95,5 @@ docker-compose build
 docker-compose up
 ```
 Launch the API on [http://localhost:8000/](http://localhost:8000/)
+
 Launch the UI on [http://localhost:5006/](http://localhost:5006/)
