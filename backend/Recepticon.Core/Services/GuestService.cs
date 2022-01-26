@@ -41,14 +41,14 @@ namespace Recepticon.Core.Services
 
                 if(model.CheckOut.Date <= model.CheckIn.Date)
                 {
-                    throw new InvalidCheckInAndCheckOutException(ErrorConstants.INVALID_CHECKIN_AND_CHECKOUT);
+                    throw new InvalidCheckInAndCheckOutException(ErrorConstants.INVALID_CHECKIN_AND_CHECKOUT, new InvalidCheckInAndCheckOutException());
                 }
 
                 var room = _roomRepository.Find(model.RoomId);
 
                 if(room == null || room.RoomStatus != RoomStatus.VACANT)
                 {
-                    throw new OccupiedRoomException($"Room { model.RoomId } is not available at the moment");
+                    throw new OccupiedRoomException($"Room { model.RoomId } is not available at the moment", new OccupiedRoomException());
 
                 } else
                 {
@@ -67,7 +67,7 @@ namespace Recepticon.Core.Services
             }
             catch (Exception ex)
             {
-                throw ThrowUnknownError(ex);
+                throw ErrorConstants.ThrowException(ex, _logger);
             }
         }
 
@@ -81,7 +81,7 @@ namespace Recepticon.Core.Services
             }
             catch (Exception ex)
             {
-                throw ThrowUnknownError(ex);
+                throw ErrorConstants.ThrowException(ex, _logger);
             }
         }
 
@@ -111,27 +111,15 @@ namespace Recepticon.Core.Services
             }
             catch (Exception ex)
             {
-                throw ThrowUnknownError(ex);
+                throw ErrorConstants.ThrowException(ex, _logger);
             }
         }
 
         private Guest GetGuest(int id)
         {
             var guest = _guestRepository.Find(id);
-            if (guest == null) throw new KeyNotFoundException(ErrorConstants.GUEST_NOT_FOUND);
+            if (guest == null) throw new KeyNotFoundException(ErrorConstants.GUEST_NOT_FOUND, new KeyNotFoundException());
             return guest;
-        }
-
-        private Exception ThrowUnknownError(Exception ex)
-        {
-            _logger.LogError(ex.Message);
-
-            if (ex.InnerException is KeyNotFoundException)
-            {
-                return ex;
-            }
-
-            return new CustomException(ErrorConstants.UNKNOWN_ERROR);
         }
     }
 }

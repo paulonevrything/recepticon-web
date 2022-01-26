@@ -9,6 +9,8 @@ namespace Recepticon.Core.Exceptions
 
         public OccupiedRoomException(string message) : base(message) { }
 
+        public OccupiedRoomException(string message, Exception inner) : base(message, inner) { }
+
         public OccupiedRoomException(string message, params object[] args)
             : base(String.Format(CultureInfo.CurrentCulture, message, args))
         {

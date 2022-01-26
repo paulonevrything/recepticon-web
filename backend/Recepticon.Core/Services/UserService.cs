@@ -68,7 +68,7 @@ namespace Recepticon.Core.Services
 
             } catch(Exception ex)
             {
-                throw ThrowUnknownError(ex);
+                throw ErrorConstants.ThrowException(ex, _logger);
             }
 
         }
@@ -94,7 +94,7 @@ namespace Recepticon.Core.Services
             }
             catch (Exception ex)
             {
-                throw ThrowUnknownError(ex);
+                throw ErrorConstants.ThrowException(ex, _logger);
             }
         }
 
@@ -111,7 +111,7 @@ namespace Recepticon.Core.Services
 
             } catch (Exception ex)
             {
-                throw ThrowUnknownError(ex);
+                throw ErrorConstants.ThrowException(ex, _logger);
             }
         }
 
@@ -126,7 +126,7 @@ namespace Recepticon.Core.Services
             }
             catch (Exception ex)
             {
-                throw ThrowUnknownError(ex);
+                throw ErrorConstants.ThrowException(ex, _logger);
             }
         }
 
@@ -138,7 +138,7 @@ namespace Recepticon.Core.Services
             }
             catch (Exception ex)
             {
-                throw ThrowUnknownError(ex);
+                throw ErrorConstants.ThrowException(ex, _logger);
             }
         }
 
@@ -162,7 +162,7 @@ namespace Recepticon.Core.Services
             }
             catch (Exception ex)
             {
-                throw ThrowUnknownError(ex);
+                throw ErrorConstants.ThrowException(ex, _logger);
             }
         }
 
@@ -172,7 +172,7 @@ namespace Recepticon.Core.Services
 
             if (user == null)
             {
-                throw new KeyNotFoundException("User not found");
+                throw new KeyNotFoundException(ErrorConstants.USER_NOT_FOUND);
             }
 
             return user;
@@ -190,18 +190,6 @@ namespace Recepticon.Core.Services
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
-        }
-
-        private Exception ThrowUnknownError(Exception ex)
-        {
-            _logger.LogError(ex.Message);
-
-            if (ex.InnerException is KeyNotFoundException)
-            {
-                return ex;
-            }
-
-            return new CustomException(ErrorConstants.UNKNOWN_ERROR);
         }
     }
 }
