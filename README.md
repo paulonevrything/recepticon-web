@@ -70,8 +70,8 @@ Recepticon Web consists of the following features:
 
 The limitations with this current version of Recepticon includes:
 
--   The Receptionist cannot view the list of guests
--   The Admin cannot manually checkout the guest
+-   No pagenation on the get all guest endpoint
+-   Guests cannot be manually checked out
 
 ## [](https://github.com/paulonevrything/recepticon-web#likely-improvements)[](https://github.com/paulonevrything/recepticon-web#improvements)Likely Improvements
 
