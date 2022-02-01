@@ -46,7 +46,7 @@ namespace Recepticon.Core.Services
 
                 var existingUser = _userRepository.List(x => x.Username == username).FirstOrDefault();
 
-                if(existingUser != null && BCryptNet.Verify(password, existingUser.Password))
+                if (existingUser != null && BCryptNet.Verify(password, existingUser.Password))
                 {
 
                     var token = generateJwtToken(existingUser);
@@ -66,7 +66,8 @@ namespace Recepticon.Core.Services
 
                 return null;
 
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw ErrorConstants.ThrowException(ex, _logger);
             }
@@ -82,7 +83,7 @@ namespace Recepticon.Core.Services
                 if (existingUser != null)
                     throw new AlreadyExistException("User with the username '" + model.Username + "' already exists");
 
-                var user =_mapper.Map<User>(model);
+                var user = _mapper.Map<User>(model);
 
                 user.Password = BCryptNet.HashPassword(model.Password);
 
@@ -109,7 +110,8 @@ namespace Recepticon.Core.Services
 
                 return true;
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw ErrorConstants.ThrowException(ex, _logger);
             }
@@ -184,7 +186,11 @@ namespace Recepticon.Core.Services
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
+                Subject = new ClaimsIdentity(new[]
+                { 
+                    new Claim("id", user.Id.ToString()),
+                    new Claim(ClaimTypes.Role, user.Role.ToString())
+                }),
                 Expires = DateTime.UtcNow.AddDays(2),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
