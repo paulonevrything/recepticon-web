@@ -13,7 +13,7 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace Recepticon.Api.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize(Roles = "1")]
+    [Authorize(Roles = "ADMIN")]
     [ApiController]
     public class UsersController : ControllerBase
     {
