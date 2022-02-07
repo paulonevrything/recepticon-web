@@ -42,6 +42,10 @@ namespace Recepticon.Core.Helpers
             {
                 statusCode = (int)HttpStatusCode.InternalServerError;
             }
+            else if (ex.InnerException is InvalidCheckInAndCheckOutException || ex.InnerException is OccupiedRoomException)
+            {
+                statusCode = (int)HttpStatusCode.BadRequest;
+            }
             else if (ex.InnerException is KeyNotFoundException)
             {
                 statusCode = (int)HttpStatusCode.NotFound;

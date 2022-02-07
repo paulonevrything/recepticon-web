@@ -20,7 +20,7 @@ namespace Recepticon.Core.Constants
             logger.LogError(ex.Message);
 
             if ((ex.InnerException is KeyNotFoundException) || (ex.InnerException is InvalidCheckInAndCheckOutException)
-                 || (ex.InnerException is OccupiedRoomException))
+                 || (ex.InnerException is OccupiedRoomException) || (ex.InnerException is AlreadyExistException))
             {
                 return ex;
             }
