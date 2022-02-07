@@ -81,7 +81,7 @@ namespace Recepticon.Core.Services
                 var existingUser = _userRepository.List(x => x.Username == model.Username).FirstOrDefault();
 
                 if (existingUser != null)
-                    throw new AlreadyExistException("User with the username '" + model.Username + "' already exists");
+                    throw new AlreadyExistException("User with the username '" + model.Username + "' already exists", new AlreadyExistException());
 
                 var user = _mapper.Map<User>(model);
 
@@ -174,7 +174,7 @@ namespace Recepticon.Core.Services
 
             if (user == null)
             {
-                throw new KeyNotFoundException(ErrorConstants.USER_NOT_FOUND);
+                throw new KeyNotFoundException(ErrorConstants.USER_NOT_FOUND, new KeyNotFoundException());
             }
 
             return user;
