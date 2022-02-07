@@ -44,7 +44,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
                     status: error.status
                 };
 
-                this._snackBar.open(error && error.error && error.error.message ? error.error.message : 'Service is unavailable at the moment. Please try again later', 'Ok', {
+                this._snackBar.open(error && error.error && error.error.Message ? error.error.Message : 'Service is unavailable at the moment. Please try again later', 'Ok', {
                     duration: 5000
                 })
 
