@@ -1,11 +1,14 @@
 package recepticon.backend.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import recepticon.backend.model.Role;
 import recepticon.backend.model.User;
 
 public class UserDTO {
 
     private String username;
+
+    @JsonIgnore
     private String password;
     private String firstName;
     private String lastName;
