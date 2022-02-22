@@ -15,7 +15,6 @@ import recepticon.backend.model.response.AuthenticateResponseModel;
 import recepticon.backend.security.TokenProvider;
 import recepticon.backend.service.UserService;
 
-import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/users")
@@ -30,14 +29,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    /**
-     * Handles the incoming POST API "/v1/user/signup"
-     *
-//     * @param userSignupRequest
-//     * @return
-     */
+
     @PostMapping("/authenticate")
-    public ResponseEntity<?> authenticate(@RequestBody @Valid AuthenticationModel authenticationModel) {
+    public ResponseEntity<?> authenticate(@RequestBody AuthenticationModel authenticationModel) {
 
         final Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
