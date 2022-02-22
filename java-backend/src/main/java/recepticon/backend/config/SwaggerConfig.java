@@ -1,7 +1,6 @@
 package recepticon.backend.config;
 
 import io.swagger.v3.oas.models.Components;
-import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
@@ -15,13 +14,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SwaggerConfig {
 
-    public static final String AUTHORIZATION_HEADER = "Authorization";
+    public static final String BEARER = "bearer";
     public static final String JWT = "JWT";
+    public static final String BEARER_AUTH = "bearerAuth";
 
 
     @Bean
     public OpenAPI customOpenAPI() {
-        final String securitySchemeName = "bearerAuth";
+        final String securitySchemeName = BEARER_AUTH;
         return new OpenAPI()
                 .addSecurityItem(new SecurityRequirement().addList(securitySchemeName))
                 .components(
@@ -30,8 +30,8 @@ public class SwaggerConfig {
                                         new SecurityScheme()
                                                 .name(securitySchemeName)
                                                 .type(SecurityScheme.Type.HTTP)
-                                                .scheme("bearer")
-                                                .bearerFormat("JWT")
+                                                .scheme(BEARER)
+                                                .bearerFormat(JWT)
                                 )
                 )
                 .info(new Info().title("Recepticon API")
