@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Recepticon.Domain.Users;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Recepticon.Core.Helpers
 {

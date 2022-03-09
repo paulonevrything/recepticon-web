@@ -2,17 +2,14 @@
 using Microsoft.Extensions.Logging;
 using Recepticon.Core.Constants;
 using Recepticon.Core.Exceptions;
-using Recepticon.Core.Helpers;
 using Recepticon.Core.Services.Interfaces;
 using Recepticon.Domain.Interfaces;
 using Recepticon.Domain.Models;
 using Recepticon.Domain.Rooms;
 using Recepticon.Domain.RoomTypes;
-using Recepticon.Domain.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Recepticon.Core.Services

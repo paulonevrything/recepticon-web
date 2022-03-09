@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Recepticon.Domain.Guest;
 using Recepticon.Domain.Models;
 using Recepticon.Domain.Rooms;

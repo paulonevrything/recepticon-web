@@ -4,11 +4,8 @@ using Recepticon.Api.Controllers;
 using Recepticon.Core.Services.Interfaces;
 using Recepticon.Domain.Models;
 using Recepticon.Domain.Users;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 

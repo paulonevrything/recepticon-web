@@ -1,8 +1,6 @@
 ﻿using Recepticon.Domain.Guest;
 using Recepticon.Domain.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Recepticon.Core.Services.Interfaces

@@ -2,12 +2,9 @@
 using Moq;
 using Recepticon.Api.Controllers;
 using Recepticon.Core.Services.Interfaces;
-using Recepticon.Domain.Rooms;
 using Recepticon.Domain.RoomTypes;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 

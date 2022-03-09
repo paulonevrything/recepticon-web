@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
 using Hangfire;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -116,8 +109,6 @@ namespace Recepticon.Api
                     IssuerSigningKey = new SymmetricSecurityKey(Key)
                 };
             });
-
-
 
             services.AddDbContext<RecepticonDbContext>(options =>
             {
