@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
-using Recepticon.Domain.Models;
-using Recepticon.Domain.Users;
+﻿using Recepticon.Domain.Users;
 
 namespace Recepticon.Persistence.Repositories
 {

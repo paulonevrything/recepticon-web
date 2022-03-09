@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Recepticon.Core.Services.Interfaces;
 using Recepticon.Domain.Models;
-using Recepticon.Domain.Users;
-using Swashbuckle.AspNetCore.Annotations;
 
 namespace Recepticon.Api.Controllers
 {

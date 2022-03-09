@@ -1,5 +1,4 @@
-﻿using System;
-using Recepticon.Domain.Interfaces;
+﻿using Recepticon.Domain.Interfaces;
 
 namespace Recepticon.Domain.Users
 {

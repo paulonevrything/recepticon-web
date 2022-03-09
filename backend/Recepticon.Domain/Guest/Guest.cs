@@ -1,9 +1,7 @@
 ﻿using Recepticon.Domain.Base;
 using Recepticon.Domain.Rooms;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Recepticon.Domain.Guest
 {

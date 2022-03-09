@@ -1,5 +1,4 @@
-﻿using System;
-using Recepticon.Domain.Models;
+﻿using Recepticon.Domain.Models;
 using Recepticon.Domain.Base;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;

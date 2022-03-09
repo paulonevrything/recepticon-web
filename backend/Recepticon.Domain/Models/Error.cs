@@ -1,5 +1,4 @@
-﻿using System;
-namespace Recepticon.Domain.Models
+﻿namespace Recepticon.Domain.Models
 {
     public class Error
     {
